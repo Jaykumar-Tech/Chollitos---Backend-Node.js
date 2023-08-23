@@ -175,6 +175,23 @@ User.resetPassword = (email, password, result) => {
             })
     })
 }
+User.uploadAvatar = (data) => {
+    return new Promise((resolve, reject)=> {
+        client.query("UPDATE user set avatar=? WHERE id=?",
+        [data.avatar, data.user_id],
+        (err, rows)=>{
+            if (err) {
+                reject(err);
+                return;
+            } else if (res.affectedRows == 0) {
+                reject({ message: "User Not Found" });
+                return;
+            } else {
+                resolve(rows);
+            }
+        })
+    })
+}
 User.logoutUser = (token, exp) => {
     return new Promise((resolve, reject) => {
         const now = new Date();

@@ -113,16 +113,26 @@ exports.google = async (req, res) => {
     defaultApp.auth().verifyIdToken(idToken)
         .then(async (decodedToken) => {
             try {
-                var user = await UserModel.findByEmail(email);
-                const token = await jwtUtil.createToken({ id: user.id, role: user.role });
-                return res.json({
-                    access_token: token,
-                    token_type: 'Bearer',
-                    expires_in: jwtConfig.ttl,
-                    user: {
-                        name: user.username,
-                        role: user.role
+                try {
+                    var user = await UserModel.findByEmail(email);
+                    if (user.status) {
+                        return res.status(400).json({
+                            message: 'Email already exists.'
+                        });
+                    } else {
+                        await UserModel.remove(user.id, (err, response) => { });
                     }
+                } catch (error) { }
+                console.log(decodedToken) ;
+
+                const userData = {
+                    username: "temp",
+                    email: email,
+                    password: "temp"
+                }
+                await UserModel.create(userData);
+                return res.json({
+                    message:"Valid Email"
                 });
             } catch (error) {
                 return res.status(400).send({
@@ -164,17 +174,11 @@ exports.authCallback = async (req, res) => {
 
 exports.register = async (req, res) => {
     try {
-        try {
-            var user = await UserModel.findByEmail(req.body.email);
-            return res.status(400).json({
-                message: 'Email already exists.'
-            });
-        } catch (error) { }
         const email = req.body.email;
         const password = req.body.password;
         const username = req.body.username;
         const hashedPassword = await bcryptUtil.createHash(password);
-        if (Object.keys(req.body).indexOf("avatar") == -1)
+        if ( Object.keys(req.body).indexOf("avatar") == -1 ) 
             req.body.avatar = `${urlConfig.SERVER_URL}api/resource/get/default-avatar.png`;
         const userData = {
             username: username,
@@ -184,6 +188,7 @@ exports.register = async (req, res) => {
             status: true,
             avatar: req.body.avatar
         }
+        await UserModel.removeByEmail(email, (err, response) => { });
         await UserModel.create(userData)
         return res.json({
             message: 'Success Register'
@@ -221,21 +226,6 @@ exports.login = async (req, res) => {
             return res.status(400).json({
                 message: "Unauthorized."
             })
-    }
-    catch (error) {
-        return res.status(400).send({
-            error: error.message
-        })
-    }
-}
-
-exports.avatar = async(req, res) => {
-    try {
-        var result = await UserModel.uploadAvatar(req.body) ;
-        return res.json({
-            message: "success",
-            data: result
-        })
     }
     catch (error) {
         return res.status(400).send({

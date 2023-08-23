@@ -46,8 +46,7 @@ function validateLoginType (value) {
 
 module.exports = {
     register: Joi.object().keys({
-        firstname: Joi.string().required(),
-        lastname: Joi.string().required(),
+        username: Joi.string().required(),
         email: Joi.string().email().required(),
         password: Joi.string().required().min(8).max(16).external(validatePassword),
         type: Joi.string().required().external(validateLoginType),

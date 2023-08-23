@@ -5,9 +5,10 @@
 /backend/.cache
 
 /deploy
-/frontend_test
+/frontend
 
 *.zip
 *.pptx
 *.log
 *.bat
+package-lock.json
