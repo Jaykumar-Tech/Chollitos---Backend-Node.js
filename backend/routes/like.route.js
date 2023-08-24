@@ -5,8 +5,9 @@ const LikeController = require('../controllers/like.controller');
 const ErrorHandler = require('../middleware/error.middleware');
 // const schema = require('../validations/follow.validation');
 // const validate = require('../utils/validator.util'); 
+const AuthGuard = require('../middleware/auth.middleware'); 
 
-router.post('/add',             ErrorHandler(LikeController.create));
+router.post('/add',    AuthGuard,         ErrorHandler(LikeController.create));
 router.post('/find',             ErrorHandler(LikeController.find));
 router.post('/get',           ErrorHandler(LikeController.get));
 

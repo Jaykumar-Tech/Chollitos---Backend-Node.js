@@ -5,6 +5,7 @@ const router = express.Router();
 
 const ResourceController = require('../controllers/resource.controller');
 const ErrorHandler = require('../middleware/error.middleware');
+const AuthGuard = require('../middleware/auth.middleware'); 
 // const schema = require('../validations/follow.validation');
 // const validate = require('../utils/validator.util'); 
 
@@ -20,7 +21,7 @@ const upload = multer({
     storage: storage
 });
 
-router.post('/upload', upload.single('file'),  ErrorHandler(ResourceController.upload));
+router.post('/upload', AuthGuard, upload.single('file'),  ErrorHandler(ResourceController.upload));
 router.get('/get/:id', ErrorHandler(ResourceController.get));
 
 router.all('*', (req, res) => res.status(400).json({ message: 'Bad Request.' }))
