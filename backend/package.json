@@ -6,7 +6,8 @@
     "start": "node  ./bin/www",
     "watch": "nodemon ./bin/www",
     "deploy": "eb init --platform node.js --region ap-south-1",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "init": "mysql -u root -p chollo < db.sql"
   },
   "dependencies": {
     "async": "^3.2.4",

@@ -214,7 +214,8 @@ exports.login = async (req, res) => {
                 expires_in: jwtConfig.ttl,
                 user: {
                     name: user.username,
-                    role: user.role
+                    role: user.role,
+                    avatar: user.avatar
                 }
             });
         } else
