@@ -244,3 +244,19 @@ exports.avatar = async(req, res) => {
         })
     }
 }
+
+exports.getAllUsers = async (req, res) => {
+    
+    try {
+        var result = await UserModel.getAll();
+        return res.json({
+            message: "success",
+            data: result
+        })
+    }
+    catch (error) {
+        return res.status(400).send({
+            error: error.message
+        })
+    }
+}

@@ -17,6 +17,9 @@ router.post('/register',                                        ErrorHandler(Aut
 // Login
 router.post('/login',                                          ErrorHandler(AuthController.login)); // exist email
 
+// Get All user's information
+router.get('/getall',                                           ErrorHandler(AuthController.getAllUsers));
+
 // router.post('/login',    validate(schema.login),                ErrorHandler(AuthController.login));
 // router.get('/user',                                             ErrorHandler(AuthController.getUser));
 // router.get('/logout',    AuthGuard,                                       ErrorHandler(AuthController.logout));
