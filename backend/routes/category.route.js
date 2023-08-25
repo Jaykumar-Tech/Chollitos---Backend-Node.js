@@ -9,6 +9,7 @@ const ErrorHandler = require('../middleware/error.middleware');
 router.post('/add',             ErrorHandler(CategoryController.create));
 router.get('/children/:id',             ErrorHandler(CategoryController.getChildren));
 router.get('/getall',           ErrorHandler(CategoryController.getAll));
+router.get('/get/:slug_id',           ErrorHandler(CategoryController.getBySlug));
 
 router.all('*',  (req, res) => res.status(400).json({ message: 'Bad Request.'}))
 
