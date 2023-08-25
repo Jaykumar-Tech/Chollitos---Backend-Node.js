@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 24/08/2023 21:22:26
+ Date: 25/08/2023 08:04:52
 */
 
 SET NAMES utf8mb4;
@@ -191,17 +191,17 @@ DROP TABLE IF EXISTS `deal`;
 CREATE TABLE `deal`  (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `type` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `price_new` decimal(10, 2) NULL DEFAULT NULL,
   `price_low` decimal(10, 2) NULL DEFAULT NULL,
-  `price_ship` decimal(10, 2) NOT NULL,
-  `store_id` int(4) NOT NULL,
-  `deal_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `price_ship` decimal(10, 2) NULL DEFAULT NULL,
+  `store_id` int(4) NULL DEFAULT NULL,
+  `deal_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `user_id` int(4) NOT NULL,
+  `user_id` int(4) NULL DEFAULT NULL,
   `category_id` int(4) NULL DEFAULT NULL,
-  `status` int(2) NOT NULL,
+  `status` int(2) NULL DEFAULT 0,
   `start_date` date NULL DEFAULT NULL,
   `expires` date NULL DEFAULT NULL,
   `count_of_used` int(4) NULL DEFAULT 0,
