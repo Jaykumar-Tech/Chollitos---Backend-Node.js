@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 25/08/2023 22:30:28
+ Date: 26/08/2023 03:04:11
 */
 
 SET NAMES utf8mb4;
@@ -102,41 +102,41 @@ CREATE TABLE `category`  (
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES (1, 'babies and children', '123', -1);
-INSERT INTO `category` VALUES (2, 'Feeding bottle', '123', 1);
-INSERT INTO `category` VALUES (3, 'Dr Brown\'s', '123', 2);
-INSERT INTO `category` VALUES (4, 'Philips Avent Babybottles', '123', 2);
-INSERT INTO `category` VALUES (5, 'Difrax', '123', 2);
-INSERT INTO `category` VALUES (6, 'free layettes', '123', 1);
-INSERT INTO `category` VALUES (7, 'Strollers and strollers', '123', 1);
-INSERT INTO `category` VALUES (8, 'bugaboo', '123', 7);
-INSERT INTO `category` VALUES (9, 'Chicco buggy', '123', 7);
-INSERT INTO `category` VALUES (10, 'Toys', '123', 1);
-INSERT INTO `category` VALUES (11, 'Cards and board games', '123', 10);
-INSERT INTO `category` VALUES (12, 'Fisher-Price', '123', 10);
-INSERT INTO `category` VALUES (13, 'Funko Pop!', '123', 10);
-INSERT INTO `category` VALUES (14, 'hot wheels', '123', 10);
-INSERT INTO `category` VALUES (15, 'Block & Building Toys', '123', 10);
-INSERT INTO `category` VALUES (16, 'outdoor toys', '123', 10);
-INSERT INTO `category` VALUES (17, 'LOL Surprise', '123', 10);
-INSERT INTO `category` VALUES (18, 'dolls', '123', 10);
-INSERT INTO `category` VALUES (19, 'Food and drink', '123', -1);
-INSERT INTO `category` VALUES (20, 'Feeding', '123', 19);
-INSERT INTO `category` VALUES (21, 'Chocolate', '123', 19);
-INSERT INTO `category` VALUES (22, 'food at home', '123', 19);
-INSERT INTO `category` VALUES (23, 'Sport Nutrition', '123', 19);
-INSERT INTO `category` VALUES (24, 'Restaurants', '123', 19);
-INSERT INTO `category` VALUES (25, 'electronics', '123', -1);
-INSERT INTO `category` VALUES (26, 'data storage', '123', 25);
-INSERT INTO `category` VALUES (27, 'Audio & HiFi', '123', 25);
-INSERT INTO `category` VALUES (28, 'power banks', '123', 25);
-INSERT INTO `category` VALUES (29, 'batteries', '123', 25);
-INSERT INTO `category` VALUES (30, 'Free', '123', -1);
-INSERT INTO `category` VALUES (31, 'raffles', '123', 30);
-INSERT INTO `category` VALUES (32, 'Home', '123', -1);
-INSERT INTO `category` VALUES (33, 'Garden', '123', 32);
-INSERT INTO `category` VALUES (34, 'Furniture', '123', 32);
-INSERT INTO `category` VALUES (35, 'Home applicances', '123', 32);
+INSERT INTO `category` VALUES (1, 'babies and children', 'babies-and-children', -1);
+INSERT INTO `category` VALUES (2, 'Feeding bottle', 'feeding-bottle', 1);
+INSERT INTO `category` VALUES (3, 'Dr Brown\'s', 'dr-brown\'s', 2);
+INSERT INTO `category` VALUES (4, 'Philips Avent Babybottles', 'philips-avent-babybottles', 2);
+INSERT INTO `category` VALUES (5, 'Difrax', 'difrax', 2);
+INSERT INTO `category` VALUES (6, 'free layettes', 'free-layettes', 1);
+INSERT INTO `category` VALUES (7, 'Strollers and strollers', 'strollers-and-strollers', 1);
+INSERT INTO `category` VALUES (8, 'bugaboo', 'bugaboo', 7);
+INSERT INTO `category` VALUES (9, 'Chicco buggy', 'chicco-buggy', 7);
+INSERT INTO `category` VALUES (10, 'Toys', 'toys', 1);
+INSERT INTO `category` VALUES (11, 'Cards and board games', 'cards-and-board-games', 10);
+INSERT INTO `category` VALUES (12, 'Fisher-Price', 'fisher-price', 10);
+INSERT INTO `category` VALUES (13, 'Funko Pop!', 'funko-pop', 10);
+INSERT INTO `category` VALUES (14, 'hot wheels', 'hot-wheels', 10);
+INSERT INTO `category` VALUES (15, 'Block & Building Toys', 'block-building-toys', 10);
+INSERT INTO `category` VALUES (16, 'outdoor toys', 'outdoor-toys', 10);
+INSERT INTO `category` VALUES (17, 'LOL Surprise', 'lol-surprise', 10);
+INSERT INTO `category` VALUES (18, 'dolls', 'dolls', 10);
+INSERT INTO `category` VALUES (19, 'Food and drink', 'food-and-drink', -1);
+INSERT INTO `category` VALUES (20, 'Feeding', 'feeding', 19);
+INSERT INTO `category` VALUES (21, 'Chocolate', 'chocolate', 19);
+INSERT INTO `category` VALUES (22, 'food at home', 'food-at-home', 19);
+INSERT INTO `category` VALUES (23, 'Sport Nutrition', 'sport-nutrition', 19);
+INSERT INTO `category` VALUES (24, 'Restaurants', 'restaurants', 19);
+INSERT INTO `category` VALUES (25, 'electronics', 'electronics', -1);
+INSERT INTO `category` VALUES (26, 'data storage', 'data-storage', 25);
+INSERT INTO `category` VALUES (27, 'Audio & HiFi', 'audio-hifi', 25);
+INSERT INTO `category` VALUES (28, 'power banks', 'power-banks', 25);
+INSERT INTO `category` VALUES (29, 'batteries', 'batteries', 25);
+INSERT INTO `category` VALUES (30, 'Free', 'free', -1);
+INSERT INTO `category` VALUES (31, 'raffles', 'raffles', 30);
+INSERT INTO `category` VALUES (32, 'Home', 'home', -1);
+INSERT INTO `category` VALUES (33, 'Garden', 'garden', 32);
+INSERT INTO `category` VALUES (34, 'Furniture', 'furniture', 32);
+INSERT INTO `category` VALUES (35, 'Home applicances', 'home-applicances', 32);
 
 -- ----------------------------
 -- Table structure for comment
