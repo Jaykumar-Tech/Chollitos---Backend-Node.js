@@ -46,7 +46,7 @@ User.findByEmail = (email) => {
                 resolve(res[0]);
                 return;
             } else {
-                reject({ message: "not_found" });
+                reject({ message: "User Email Not Found" });
             }
         });
     })

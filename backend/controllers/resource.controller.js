@@ -6,6 +6,7 @@ const sizeOf = require('image-size')
 
 exports.upload = async (req, res) => {
     try {
+        console.log(req.file);
         const newName = randomUtil.generateLongNumber();
 
         _size = sizeOf(req.file.path);
@@ -13,7 +14,7 @@ exports.upload = async (req, res) => {
         _size.width *= 240.0 / maxSize ;
         _size.height *= 240.0 / maxSize ;
         sharp(req.file.path)
-            .resize(_size.width, _size.height)
+            .resize(Math.floor(_size.width), Math.floor(_size.height))
             .toFile(__dirname + "/../resource/" + newName, (err, info) => {
                 if (err) {
                 } else {
