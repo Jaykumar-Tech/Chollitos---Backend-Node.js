@@ -14,8 +14,6 @@ module.exports = async (req, res, next) => {
             var keys = Object.keys(req.body);
             if (keys.indexOf("user_id") >= 0)
                 await UserModel.findById(req.body.user_id);
-            if (keys.indexOf("sender_id") >= 0)
-                await UserModel.findById(req.body.sender_id);
             if (keys.indexOf("receiver_id") >= 0)
                 await UserModel.findById(req.body.receiver_id);
             if (keys.indexOf("store_id") >= 0 && req.body.store_id != -1)

@@ -30,7 +30,7 @@ exports.setRead = async (req, res) => {
 
 exports.getUnread = async (req, res) => {
     try {
-        var result = await NotificationModel.getUnread(req.params.user_id) ;
+        var result = await NotificationModel.getUnread(req.user.id) ;
         return res.json({
             message: "success",
             data: result

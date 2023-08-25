@@ -2,6 +2,7 @@ CommentModel = require("../models/comment.model");
 
 exports.create = async (req, res) => {
     try {
+        req.body.user_id = req.user.id;
         var result = await CommentModel.create(req.body) ;
         return res.json({
             message: "success",

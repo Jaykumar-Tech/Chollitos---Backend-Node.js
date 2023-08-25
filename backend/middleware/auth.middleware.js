@@ -19,6 +19,8 @@ module.exports = async (req, res, next) => {
             
             const decoded = await jwtUtil.verifyToken(token);
             req.user = decoded;
+            if ( req.method=="POST")
+                req.body.user_id = req.user.id;
             req.token = token;
             next();
         } catch (error) {

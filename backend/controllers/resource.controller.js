@@ -11,8 +11,8 @@ exports.upload = async (req, res) => {
 
         _size = sizeOf(req.file.path);
         let maxSize = Math.max(_size.height, _size.width) ;
-        _size.width *= 240.0 / maxSize ;
-        _size.height *= 240.0 / maxSize ;
+        _size.width *= 600.0 / maxSize ;
+        _size.height *= 600.0 / maxSize ;
         sharp(req.file.path)
             .resize(Math.floor(_size.width), Math.floor(_size.height))
             .toFile(__dirname + "/../resource/" + newName, (err, info) => {

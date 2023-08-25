@@ -8,8 +8,8 @@ const AuthGuard = require('../middleware/auth.middleware');
 // const validate = require('../utils/validator.util'); 
 
 router.post('/add',             ErrorHandler(ActivityController.create));
-router.get('/get/:user_id',   AuthGuard,        ErrorHandler(ActivityController.get));
-router.get('/getpoint/:user_id',    AuthGuard,       ErrorHandler(ActivityController.getPoint));
+router.get('/get',   AuthGuard,        ErrorHandler(ActivityController.get));
+router.get('/getpoint',    AuthGuard,       ErrorHandler(ActivityController.getPoint));
 router.post('/addname',           ErrorHandler(ActivityController.addName));
 router.get('/delete/:id',           ErrorHandler(ActivityController.deleteName));
 router.get('/getallname',           ErrorHandler(ActivityController.getAllName));

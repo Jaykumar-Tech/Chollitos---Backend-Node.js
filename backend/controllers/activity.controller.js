@@ -16,7 +16,7 @@ exports.create = async (req, res) => {
 
 exports.get = async (req, res) => {
     try {
-        var result = await ActivityModel.get(req.params.user_id) ;
+        var result = await ActivityModel.get(req.user.id) ;
         return res.json({
             message: "success",
             data: result
@@ -30,7 +30,7 @@ exports.get = async (req, res) => {
 
 exports.getPoint = async (req, res) => {
     try {
-        var result = await ActivityModel.getPoint(req.params.user_id) ;
+        var result = await ActivityModel.getPoint(req.user.id) ;
         return res.json({
             message: "success",
             data: result
