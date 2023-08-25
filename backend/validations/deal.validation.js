@@ -36,11 +36,11 @@ module.exports = {
         price_low: Joi.number(),
         price_ship: Joi.number(),
         type: Joi.string().required().external(validateType),
-        store_id: Joi.number().required(),
-        deal_url: Joi.string().required(),
-        image_url: Joi.string().required(),
-        category_id: Joi.number().required(),
-        start_date: Joi.date().required(),
+        store_id: Joi.number(),
+        deal_url: Joi.string(),
+        image_url: Joi.string(),
+        category_id: Joi.number(),
+        start_date: Joi.date(),
         expires: Joi.date()
     }),
     find: Joi.object().keys({
