@@ -101,7 +101,7 @@ Deal.find = (data) => {
                     return;
                 }
                 if (rows.length == 0) {
-                    reject({ message: "not found" })
+                    reject({ message: "deals not found" })
                     return
                 }
                 resolve(rows);
@@ -156,7 +156,7 @@ Deal.count = (data) => {
                     return;
                 }
                 if (rows.length == 0) {
-                    reject({ message: "not found" })
+                    reject({ message: "deals not found" })
                     return
                 }
                 resolve(rows);
