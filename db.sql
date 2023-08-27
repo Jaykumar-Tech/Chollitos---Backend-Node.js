@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 26/08/2023 11:10:36
+ Date: 27/08/2023 10:35:50
 */
 
 SET NAMES utf8mb4;
@@ -444,11 +444,11 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'daltonchua', 'daltonchua3@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, NULL, 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
-INSERT INTO `user` VALUES (2, 'daltonchua', 'daltonchua2@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, NULL, 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
-INSERT INTO `user` VALUES (3, 'daltonchua', 'daltonchu1a@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, NULL, 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
-INSERT INTO `user` VALUES (15, 'daltonchua2', 'daltonchua@outlook.com', '$2a$10$qRXC2PbdsJY/rpy4nQeequaPfseE4J6TKgAVMT/KU.HlfWsSxPPqe', NULL, 'customer', NULL, 1, 0, NULL, 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
-INSERT INTO `user` VALUES (20, 'Hello', 'Hello@gmail.com', '$2a$10$XK//UPqPTLHxj0eH9Nwf6.5COLBliH3viSZyhSbxi8rGcL0rkymCm', NULL, 'customer', NULL, 1, 0, NULL, 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
-INSERT INTO `user` VALUES (21, 'Dalton', 'Dalton@gmail.com', '$2a$10$UZ7QNxqnkmf8wzowFPx2MeCH4UxLjOKsPgtYM0icsRGfJrtYHfaZi', NULL, 'customer', NULL, 1, 0, NULL, 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
+INSERT INTO `user` VALUES (1, 'daltonchua', 'daltonchua3@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
+INSERT INTO `user` VALUES (2, 'daltonchua', 'daltonchua2@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
+INSERT INTO `user` VALUES (3, 'daltonchua', 'daltonchu1a@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
+INSERT INTO `user` VALUES (15, 'daltonchua2', 'daltonchua@outlook.com', '$2a$10$qRXC2PbdsJY/rpy4nQeequaPfseE4J6TKgAVMT/KU.HlfWsSxPPqe', NULL, 'customer', NULL, 1, 0, 'Beginner', 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
+INSERT INTO `user` VALUES (20, 'Hello', 'Hello@gmail.com', '$2a$10$XK//UPqPTLHxj0eH9Nwf6.5COLBliH3viSZyhSbxi8rGcL0rkymCm', NULL, 'customer', NULL, 1, 0, 'Beginner', 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
+INSERT INTO `user` VALUES (21, 'Dalton', 'Dalton@gmail.com', '$2a$10$UZ7QNxqnkmf8wzowFPx2MeCH4UxLjOKsPgtYM0icsRGfJrtYHfaZi', NULL, 'customer', NULL, 1, 0, 'Beginner', 'http://5.75.224.135:4000/api/resource/get/default-avatar.png');
 
 SET FOREIGN_KEY_CHECKS = 1;
