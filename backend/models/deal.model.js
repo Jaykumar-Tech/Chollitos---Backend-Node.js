@@ -166,7 +166,15 @@ Deal.count = (data) => {
 
 Deal.get = (id) => {
     return new Promise((resolve, reject) => {
-        client.query("SELECT * FROM deal WHERE id=?",
+        client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, user.level as level, store.name as storename 
+        FROM deal 
+        LEFT JOIN 
+        user
+        on user.id = deal.user_id
+        LEFT JOIN
+        store
+        on store.id = deal.store_id
+        WHERE deal.id=?`,
             [id],
             (err, rows) => {
                 if (err) {

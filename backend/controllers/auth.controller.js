@@ -182,7 +182,8 @@ exports.register = async (req, res) => {
             password: hashedPassword,
             role: "customer", // "customer, business, admin"
             status: true,
-            avatar: req.body.avatar
+            avatar: req.body.avatar,
+            level: "Beginner"
         }
         await UserModel.create(userData)
         return res.json({
