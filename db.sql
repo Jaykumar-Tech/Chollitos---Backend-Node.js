@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 27/08/2023 10:35:50
+ Date: 27/08/2023 10:40:26
 */
 
 SET NAMES utf8mb4;
@@ -293,12 +293,12 @@ CREATE TABLE `likes`  (
 -- ----------------------------
 INSERT INTO `likes` VALUES (7, 1, 'deal', 15, 1);
 INSERT INTO `likes` VALUES (8, 2, 'deal', 15, 0);
-INSERT INTO `likes` VALUES (9, 2, 'deal', 16, 0);
-INSERT INTO `likes` VALUES (10, 2, 'deal', 17, 0);
-INSERT INTO `likes` VALUES (11, 2, 'deal', 18, 0);
+INSERT INTO `likes` VALUES (9, 2, 'deal', 16, 1);
+INSERT INTO `likes` VALUES (10, 2, 'deal', 17, 1);
+INSERT INTO `likes` VALUES (11, 2, 'deal', 18, 1);
 INSERT INTO `likes` VALUES (12, 2, 'deal', 19, 0);
-INSERT INTO `likes` VALUES (13, 2, 'deal', 20, 0);
-INSERT INTO `likes` VALUES (14, 2, 'deal', 21, 0);
+INSERT INTO `likes` VALUES (13, 2, 'deal', 20, 1);
+INSERT INTO `likes` VALUES (14, 2, 'deal', 21, 1);
 INSERT INTO `likes` VALUES (15, 2, 'deal', 22, 0);
 INSERT INTO `likes` VALUES (16, 1, 'deal', 22, 0);
 INSERT INTO `likes` VALUES (17, 1, 'deal', 23, 0);
