@@ -166,8 +166,34 @@ Deal.count = (data) => {
 
 Deal.get = (id) => {
     return new Promise((resolve, reject) => {
-        client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, user.level as level, store.name as storename 
+        client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, user.level as level, store.name as storename ,
+        CASE
+            WHEN ISNULL(A.count_comment) THEN 0
+            ELSE A.count_comment
+        END AS cnt_comment,
+        CASE
+            WHEN ISNULL(C.count_dislike) THEN B.count_like
+            WHEN ISNULL(B.count_like) THEN -1 * C.count_dislike
+            ELSE B.count_like - C.count_dislike
+        END AS cnt_like
         FROM deal 
+        LEFT JOIN 
+        (Select dest_id, count(*) as count_comment
+        FROM comment   
+        where type='deal'
+        GROUP BY dest_id) A ON deal.id = A.dest_id
+        LEFT JOIN
+        (select dest_id, count(*) as count_like
+        From likes
+        where type="deal" AND is_like=1
+        GROUP BY dest_id) B 
+        ON deal.id = B.dest_id
+        LEFT JOIN
+        (select dest_id, count(*) as count_dislike
+        From likes
+        where type="deal" AND is_like=0
+        GROUP BY dest_id) C 
+        ON deal.id = C.dest_id
         LEFT JOIN 
         user
         on user.id = deal.user_id
@@ -205,13 +231,13 @@ Deal.getCode = (id) => {
                 }
                 let countOfUsed = rows[0].count_of_used + 1;
                 client.query("UPDATE deal SET count_of_used=? WHERE id=?",
-                [countOfUsed, id], (err, row) => {
-                    if (err) {
-                        reject(err);
-                        return;
-                    }
-                    resolve(row)
-                })
+                    [countOfUsed, id], (err, row) => {
+                        if (err) {
+                            reject(err);
+                            return;
+                        }
+                        resolve(row)
+                    })
             });
     });
 };
