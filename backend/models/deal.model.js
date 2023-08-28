@@ -59,7 +59,7 @@ Deal.find = (data) => {
 
     filter = filter.join(" AND ");
     return new Promise((resolve, reject) => {
-        client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, store.name as storename,
+        client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, store.name as storename,, category.slug as category_slug,
         CASE
             WHEN ISNULL(A.count_comment) THEN 0
             ELSE A.count_comment
@@ -93,6 +93,9 @@ Deal.find = (data) => {
         LEFT JOIN
         store 
         ON deal.store_id = store.id
+        LEFT JOIN
+        category
+        on category.id = deal.category_id
         WHERE ${filter} ORDER BY start_date DESC LIMIT ? OFFSET ?;`,
             [length, start_at],
             (err, rows) => {
@@ -166,7 +169,7 @@ Deal.count = (data) => {
 
 Deal.get = (id) => {
     return new Promise((resolve, reject) => {
-        client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, user.level as level, store.name as storename ,
+        client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, user.level as level, store.name as storename , category.slug as category_slug,
         CASE
             WHEN ISNULL(A.count_comment) THEN 0
             ELSE A.count_comment
@@ -200,6 +203,9 @@ Deal.get = (id) => {
         LEFT JOIN
         store
         on store.id = deal.store_id
+        LEFT JOIN
+        category
+        on category.id = deal.category_id
         WHERE deal.id=?`,
             [id],
             (err, rows) => {
