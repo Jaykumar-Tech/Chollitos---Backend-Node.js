@@ -37,7 +37,7 @@ Like.create = (data) => {
             data, (err2, row) => {
                 if (err2) {
                     console.log("erorr2")
-                    reject(err);
+                    reject(err2);
                     return;
                 }
                 resolve(row);
