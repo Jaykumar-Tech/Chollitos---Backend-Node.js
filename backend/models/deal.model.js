@@ -59,7 +59,7 @@ Deal.find = (data) => {
 
     filter = filter.join(" AND ");
     return new Promise((resolve, reject) => {
-        client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, store.name as storename,, category.slug as category_slug,
+        client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, store.name as storename, category.slug as category_slug,
         CASE
             WHEN ISNULL(A.count_comment) THEN 0
             ELSE A.count_comment
