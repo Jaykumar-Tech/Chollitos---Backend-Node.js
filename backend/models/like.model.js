@@ -43,8 +43,6 @@ Like.create = (data) => {
                 resolve(row);
             });
         })
-
-                
     })
 };
 

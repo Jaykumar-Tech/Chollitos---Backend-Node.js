@@ -8,7 +8,7 @@ const ErrorHandler = require('../middleware/error.middleware');
 const AuthGuard = require('../middleware/auth.middleware'); 
 
 router.post('/add',    AuthGuard,         ErrorHandler(LikeController.create));
-router.post('/find',             ErrorHandler(LikeController.find));
+router.post('/find',   AuthGuard,          ErrorHandler(LikeController.find));
 router.post('/get',           ErrorHandler(LikeController.get));
 
 router.all('*',  (req, res) => res.status(400).json({ message: 'Bad Request.'}))
