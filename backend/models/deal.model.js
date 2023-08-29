@@ -45,12 +45,6 @@ Deal.find = (data) => {
     if (data.type == "discount") filter.push(`type!='deal'`)
     if (data.store_id != -1) filter.push(`store_id=${data.store_id}`);
     if (data.category_id.length > 0) filter.push(`category_id IN (${data.category_id.join(",")})`);
-    if (data.feature == "commented") filter.push(`(
-        CASE
-            WHEN ISNULL(A.count_comment) THEN 0
-            ELSE A.count_comment
-        END
-    ) > 0`);
     if (data.feature == "popular") filter.push(`(
         CASE
             WHEN ISNULL(C.count_dislike) THEN B.count_like
@@ -58,6 +52,13 @@ Deal.find = (data) => {
             ELSE B.count_like - C.count_dislike
         END
     ) > 0`);
+    if (data.feature == "highlight") filter.push(`(
+        CASE
+            WHEN ISNULL(C.count_dislike) THEN B.count_like
+            WHEN ISNULL(B.count_like) THEN -1 * C.count_dislike
+            ELSE B.count_like - C.count_dislike
+        END
+    ) > 1`);
 
     filter = filter.join(" AND ");
     return new Promise((resolve, reject) => {

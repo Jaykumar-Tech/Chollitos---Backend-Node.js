@@ -27,7 +27,7 @@ module.exports = {
         price_low: Joi.number(),
         price_ship: Joi.number(),
         type: Joi.string().required().external(validateType),
-        store_id: Joi.number().required(),
+        store_id: Joi.number(),
         deal_url: Joi.string(),
         image_url: Joi.string(),
         category_id: Joi.number(),
