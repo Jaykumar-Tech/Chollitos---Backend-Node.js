@@ -6,6 +6,12 @@ function validateType (value) {
     } 
 }
 
+function validateSearchType (value) {
+    if ( ["deal", "discount", "free", "all"].indexOf(value) ==-1 ) {
+        throw new Error("Type must be one of deal, all, discount and free");
+    } 
+}
+
 function validateFeature (value) {
     if ( ["new", "highlight", "popular", "commented"].indexOf(value) == -1 ) {
         throw new Error("Feature must be one of new, highlight, popular, commented!")
@@ -44,7 +50,7 @@ module.exports = {
         expires: Joi.date()
     }),
     find: Joi.object().keys({
-        free: Joi.number().required(),
+        type: Joi.string().required().external(validateSearchType),
         store_id: Joi.number().required(),
         category_id: Joi.array().required(),
         feature: Joi.string().required().external(validateFeature),
@@ -52,7 +58,7 @@ module.exports = {
         length: Joi.number().required()
     }),
     count: Joi.object().keys({
-        free: Joi.number().required(),
+        type: Joi.string().required().external(validateSearchType),
         store_id: Joi.number().required(),
         category_id: Joi.array().required(),
         feature: Joi.string().required().external(validateFeature),

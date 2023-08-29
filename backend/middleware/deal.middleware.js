@@ -1,6 +1,6 @@
 module.exports = async (req, res, next) => {
-    if (!req.body.hasOwnProperty("free"))
-        req.body.free = 0;
+    if (!req.body.hasOwnProperty("type"))
+        req.body.type="all";
     if (!req.body.hasOwnProperty("store_id"))
         req.body.store_id = -1;
     if (!req.body.hasOwnProperty("category_id"))

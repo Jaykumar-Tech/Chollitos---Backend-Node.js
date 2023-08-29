@@ -40,7 +40,9 @@ Deal.find = (data) => {
     var length = data.length;
     var filter = [];
     filter.push("start_date <= CURDATE()")
-    if (data.free) filter.push("type='free'")
+    if (data.type == "free") filter.push(`type='free'`)
+    if (data.type == "deal") filter.push(`type='deal'`)
+    if (data.type == "discount") filter.push(`type!='deal'`)
     if (data.store_id != -1) filter.push(`store_id=${data.store_id}`);
     if (data.category_id.length > 0) filter.push(`category_id IN (${data.category_id.join(",")})`);
     if (data.feature == "commented") filter.push(`(
@@ -114,7 +116,9 @@ Deal.find = (data) => {
 
 Deal.count = (data) => {
     var filter = [];
-    if (data.free) filter.push("type='free'")
+    if (data.type == "free") filter.push(`type='free'`)
+    if (data.type == "deal") filter.push(`type='deal'`)
+    if (data.type == "discount") filter.push(`type!='deal'`)
     if (data.store_id != -1) filter.push(`store_id=${data.store_id}`);
     if (data.category_id.length > 0) filter.push(`category_id IN (${data.category_id.join(",")})`);
     if (data.feature == "commented") filter.push(`(
