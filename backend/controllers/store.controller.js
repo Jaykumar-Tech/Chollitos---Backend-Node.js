@@ -55,3 +55,17 @@ exports.getAll = async (req, res) => {
         })
     }
 }
+
+exports.getByName = async (req, res) => {
+    try {
+        var result = await StoreModel.getByName(req.params.name);
+        return res.json({
+            message: "success",
+            data: result
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}

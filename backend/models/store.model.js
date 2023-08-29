@@ -77,4 +77,21 @@ Store.getAll = () => {
     });
 };
 
+Store.getByName = (name) => {
+    return new Promise((resolve, reject) => {
+        client.query("SELECT * FROM store WHERE name=?",[name],
+         (err, rows) => {
+            if (err) {
+                reject(err);
+                return;
+            } 
+            if ( rows.length == 0 ) {
+                reject({message: "Store Not Found"})
+                return
+            }
+            resolve(rows[0]);
+        });
+    });
+};
+
 module.exports = Store;
