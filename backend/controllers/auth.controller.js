@@ -174,15 +174,15 @@ exports.register = async (req, res) => {
         const password = req.body.password;
         const username = req.body.username;
         const hashedPassword = await bcryptUtil.createHash(password);
-        if (Object.keys(req.body).indexOf("avatar") == -1)
-            req.body.avatar = `${urlConfig.SERVER_URL}api/resource/get/default-avatar.png`;
+        // if (Object.keys(req.body).indexOf("avatar") == -1)
+        //     req.body.avatar = `${urlConfig.SERVER_URL}api/resource/get/default-avatar.png`;
         const userData = {
             username: username,
             email: email,
             password: hashedPassword,
             role: "customer", // "customer, business, admin"
             status: true,
-            avatar: req.body.avatar,
+            // avatar: req.body.avatar,
             level: "Beginner"
         }
         await UserModel.create(userData)
