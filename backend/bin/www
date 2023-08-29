@@ -33,7 +33,7 @@ var server = https.createServer(options, app);
  */
 
 server.listen(80);
-// httpServer.listen(80)
+httpServer.listen(4000)
 server.on('error', onError);
 server.on('listening', onListening);
 
