@@ -15,7 +15,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors())
-app.use(express.static(path.join(__dirname, 'public')));
 
 const ExistGuard = require("./middleware/existance.middleware");
 const userRoute = require('./routes/user.route');
@@ -45,11 +44,11 @@ app.use("/api/comment", commentRoute)
 app.use("/api/resource", resourceRoute)
 app.use("/api/activity", activityRoute)
 
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/", (req, res) => {
-    return res.json({
-        message: "Hello, Welcome to Chollo API"
-    })
+app.get("*", (req, res) => {
+    return res.sendFile(`${__dirname}/public/index.html`)
 })
+
 
 module.exports = app;
