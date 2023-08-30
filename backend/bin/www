@@ -37,8 +37,8 @@ var httpServer = http.createServer(app) ;
 
 var port = 443 ;
 
-server.listen(443);
-httpServer.listen(80)
+server.listen(3000);
+httpServer.listen(4000)
 server.on('error', onError);
 server.on('listening', onListening);
 
