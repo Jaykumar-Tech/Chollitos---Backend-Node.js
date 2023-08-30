@@ -35,7 +35,8 @@ var httpServer = http.createServer(app) ;
  * Listen on provided port, on all network interfaces.
  */
 
-var port = 443 ;
+var portHttp = 80 ;
+var portHttps = 443;
 
-httpsServer.listen(5000);
-httpServer.listen(4000);
+httpsServer.listen(portHttps);
+httpServer.listen(portHttp);
