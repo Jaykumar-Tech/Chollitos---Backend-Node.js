@@ -44,11 +44,11 @@ app.use("/api/comment", commentRoute)
 app.use("/api/resource", resourceRoute)
 app.use("/api/activity", activityRoute)
 
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("*", (req, res) => {
-    return res.sendFile(`${__dirname}/public/index.html`)
-})
+// app.get("*", (req, res) => {
+//     return res.sendFile(`${__dirname}/public/index.html`)
+// })
 
 
 module.exports = app;
