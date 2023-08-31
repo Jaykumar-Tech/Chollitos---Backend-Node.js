@@ -43,6 +43,7 @@ Deal.find = (data) => {
     if (data.type == "free") filter.push(`type='free'`)
     if (data.type == "deal") filter.push(`type='deal'`)
     if (data.type == "discount") filter.push(`type!='deal'`)
+    if (data.vip) filter.push(`vip=1`)
     if (data.store_id != -1) filter.push(`store_id=${data.store_id}`);
     if (data.category_id.length > 0) filter.push(`category_id IN (${data.category_id.join(",")})`);
     if (data.feature == "popular") filter.push(`(
@@ -120,6 +121,7 @@ Deal.count = (data) => {
     if (data.type == "free") filter.push(`type='free'`)
     if (data.type == "deal") filter.push(`type='deal'`)
     if (data.type == "discount") filter.push(`type!='deal'`)
+    if (data.vip) filter.push(`vip=1`)
     if (data.store_id != -1) filter.push(`store_id=${data.store_id}`);
     if (data.category_id.length > 0) filter.push(`category_id IN (${data.category_id.join(",")})`);
     if (data.feature == "commented") filter.push(`(

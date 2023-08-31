@@ -31,6 +31,7 @@ module.exports = {
         deal_url: Joi.string(),
         image_url: Joi.string(),
         category_id: Joi.number(),
+        vip: Joi.number(),
         start_date: Joi.date(),
         expires: Joi.date()
     }),
@@ -44,6 +45,7 @@ module.exports = {
         type: Joi.string().required().external(validateType),
         store_id: Joi.number(),
         deal_url: Joi.string(),
+        vip: Joi.string(),
         image_url: Joi.string(),
         category_id: Joi.number(),
         start_date: Joi.date(),
@@ -55,12 +57,14 @@ module.exports = {
         category_id: Joi.array().required(),
         feature: Joi.string().required().external(validateFeature),
         start_at: Joi.number().required(),
-        length: Joi.number().required()
+        length: Joi.number().required(),
+        vip: Joi.number()
     }),
     count: Joi.object().keys({
         type: Joi.string().required().external(validateSearchType),
         store_id: Joi.number().required(),
         category_id: Joi.array().required(),
         feature: Joi.string().required().external(validateFeature),
+        vip: Joi.number()
     })
 }

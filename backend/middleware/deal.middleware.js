@@ -7,5 +7,7 @@ module.exports = async (req, res, next) => {
         req.body.category_id = [];
     if (!req.body.hasOwnProperty("feature"))
         req.body.feature = "new";
+    if ( !req.body.hasOwnProperty("vip") )
+        req.body.vip = 0;
     next() ;
 }
