@@ -36,7 +36,7 @@ Category.getChildren = (id) => {
 
 Category.getAll = () => {
     return new Promise((resolve, reject) => {
-        client.query("SELECT * FROM category",
+        client.query("SELECT * FROM category ORDER BY name",
          (err, rows) => {
             if (err) {
                 reject(err);

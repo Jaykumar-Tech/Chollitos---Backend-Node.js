@@ -63,7 +63,7 @@ Store.get = (id) => {
 
 Store.getAll = () => {
     return new Promise((resolve, reject) => {
-        client.query("SELECT * FROM store", (err, rows) => {
+        client.query("SELECT * FROM store ORDER BY name asc", (err, rows) => {
             if (err) {
                 reject(err);
                 return;
