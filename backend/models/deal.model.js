@@ -35,10 +35,8 @@ Deal.edit = (id, data) => {
     });
 };
 
-Deal.find = (data) => {
-    var start_at = data.start_at;
-    var length = data.length;
-    var filter = [];
+const buildFilter = (data) => {
+    var filter = [] ;
     filter.push("start_date <= CURDATE()")
     if (data.type == "free") filter.push(`type='free'`)
     if (data.type == "deal") filter.push(`type='deal'`)
@@ -62,6 +60,13 @@ Deal.find = (data) => {
     ) > 1`);
 
     filter = filter.join(" AND ");
+    return filter ;
+}
+
+Deal.find = (data) => {
+    var start_at = data.start_at;
+    var length = data.length;
+    var filter = buildFilter(data) ;
     return new Promise((resolve, reject) => {
         client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, store.name as storename, category.slug as category_slug,
         CASE
@@ -117,28 +122,7 @@ Deal.find = (data) => {
 }
 
 Deal.count = (data) => {
-    var filter = [];
-    if (data.type == "free") filter.push(`type='free'`)
-    if (data.type == "deal") filter.push(`type='deal'`)
-    if (data.type == "discount") filter.push(`type!='deal'`)
-    if (data.vip) filter.push(`vip=1`)
-    if (data.store_id != -1) filter.push(`store_id=${data.store_id}`);
-    if (data.category_id.length > 0) filter.push(`category_id IN (${data.category_id.join(",")})`);
-    if (data.feature == "commented") filter.push(`(
-        CASE
-            WHEN ISNULL(A.count_comment) THEN 0
-            ELSE A.count_comment
-        END
-    ) > 0`);
-    if (data.feature == "popular") filter.push(`(
-        CASE
-            WHEN ISNULL(C.count_dislike) THEN B.count_like
-            WHEN ISNULL(B.count_like) THEN -1 * C.count_dislike
-            ELSE B.count_like - C.count_dislike
-        END
-    ) > 0`);
-    if (filter.length > 0) filter = filter.join(" AND ");
-    else filter = "1=1";
+    var filter = buildFilter(data) ;
     return new Promise((resolve, reject) => {
         client.query(`SELECT count(*) as cnt_deal
         FROM deal 
