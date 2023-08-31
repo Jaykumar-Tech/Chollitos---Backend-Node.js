@@ -1,4 +1,4 @@
-module.exports = async (req, res, next) => {
+exports.dealFilter = async (req, res, next) => {
     if (!req.body.hasOwnProperty("type"))
         req.body.type="all";
     if (!req.body.hasOwnProperty("store_id"))
@@ -9,5 +9,11 @@ module.exports = async (req, res, next) => {
         req.body.feature = "new";
     if ( !req.body.hasOwnProperty("vip") )
         req.body.vip = 0;
+    next() ;
+}
+
+exports.dealCreate = async (req, res, next) => {
+    if (!req.body.hasOwnProperty("expires"))
+        req.body.expires="2100-12-31";
     next() ;
 }
