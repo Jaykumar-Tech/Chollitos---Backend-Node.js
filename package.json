@@ -14,7 +14,8 @@
     "push": "git pull origin main && git push origin main",
     "build": "cd backend && npm run build && cd dist && git add . && git commit -am 'Updated' && git pull origin main && git push origin main",
     "test": "cd backend/dist && npm start",
-    "startnew": "pm2 start ./backend/bin/www"
+    "startnew": "pm2 start ./backend/bin/www",
+    "restart": "pm2 stop www && npm run pull && npm run startnew"
   },
   "repository": {
     "type": "git",
