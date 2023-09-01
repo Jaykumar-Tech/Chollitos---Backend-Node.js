@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 31/08/2023 20:47:03
+ Date: 01/09/2023 18:20:52
 */
 
 SET NAMES utf8mb4;
@@ -192,7 +192,7 @@ DROP TABLE IF EXISTS `deal`;
 CREATE TABLE `deal`  (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `type` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `price_new` decimal(10, 2) NULL DEFAULT NULL,
   `price_low` decimal(10, 2) NULL DEFAULT NULL,
@@ -357,7 +357,7 @@ CREATE TABLE `review`  (
   `user_id` int(4) NOT NULL,
   `store_id` int(4) NOT NULL,
   `star` int(2) NOT NULL,
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
