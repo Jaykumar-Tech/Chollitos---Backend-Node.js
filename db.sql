@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 02/09/2023 01:04:36
+ Date: 02/09/2023 01:55:08
 */
 
 SET NAMES utf8mb4;
@@ -275,7 +275,7 @@ INSERT INTO `deal` VALUES (74, 'lkea gift card of 50$ for only 43.11 in Eneba', 
 INSERT INTO `deal` VALUES (75, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'free', NULL, NULL, 0, 10, 'https://www.amazon.es/deal/13545001', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 3, 9, 1, '2023-08-24', '2023-09-01', 2, 0, 'CODE EXP');
 INSERT INTO `deal` VALUES (76, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'free', NULL, NULL, 0, 10, 'https://www.amazon.es/deal/13545001', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718', 3, 10, 1, '2023-08-24', '2023-09-01', 1, 1, 'CODE EXP');
 INSERT INTO `deal` VALUES (77, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'deal', 100, 20, 0, 10, 'https://www.amazon.es/deal/13545001', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718', 3, 11, 1, '2023-08-24', '2023-09-05', 0, 0, NULL);
-INSERT INTO `deal` VALUES (78, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'discount_fixed', 20, NULL, 0, 10, 'https://www.amazon.es/deal/13545001', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718', 3, 12, 1, '2023-08-23', '2023-09-03', 1, 0, 'CODE EXP');
+INSERT INTO `deal` VALUES (78, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'discount_fixed', 20, NULL, 0, 10, 'https://www.amazon.es/deal/13545001', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718', 3, 12, 1, '2023-05-23', '2023-09-03', 1, 0, 'CODE EXP');
 
 -- ----------------------------
 -- Table structure for likes
