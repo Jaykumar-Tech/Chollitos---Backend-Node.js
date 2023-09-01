@@ -70,7 +70,7 @@ exports.get = async (req, res) => {
     }
 }
 
-exports.getCode = async (req, res) => {
+exports.useCode = async (req, res) => {
     try {
         var result = await DealModel.getCode(req.params.id);
         return res.json({

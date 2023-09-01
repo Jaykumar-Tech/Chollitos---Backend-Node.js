@@ -33,7 +33,8 @@ module.exports = {
         category_id: Joi.number(),
         vip: Joi.number(),
         start_date: Joi.date(),
-        expires: Joi.date()
+        expires: Joi.date(),
+        code: Joi.string()
     }),
     edit: Joi.object().keys({
         id: Joi.number().required(),
