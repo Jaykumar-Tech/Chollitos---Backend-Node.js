@@ -59,7 +59,8 @@ module.exports = {
         feature: Joi.string().required().external(validateFeature),
         start_at: Joi.number().required(),
         length: Joi.number().required(),
-        vip: Joi.number()
+        vip: Joi.number(),
+        search: Joi.string()
     }),
     count: Joi.object().keys({
         type: Joi.string().required().external(validateSearchType),

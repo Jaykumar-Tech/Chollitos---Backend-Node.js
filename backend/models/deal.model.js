@@ -59,34 +59,14 @@ const buildFilter = (data) => {
             ELSE B.count_like - C.count_dislike
         END
     ) > 1`);
+    if ( data.search && data.search.length > 0 ) {
+        filter.push(`title LIKE '%${data.search}%'`);
+    }
 
     filter = filter.join(" AND ");
     return filter ;
 }
-// "id": 76,
-//             "title": "lkea gift card of 50$ for only 43.11 in Eneba",
-//             "description": "Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.",
-//             "type": "free",
-//             "price_new": null,
-//             "price_low": null,
-//             "price_ship": "0.00",
-//             "store_id": 10,
-//             "deal_url": "https://www.amazon.es/deal/13545001",
-//             "image_url": "https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718",
-//             "user_id": 2,
-//             "category_id": 10,
-//             "status": 1,
-//             "start_date": "2023-08-23T16:00:00.000Z",
-//             "expires": "2023-08-31T16:00:00.000Z",
-//             "count_of_used": 1,
-//             "vip": 1,
-//             "code": "CODE EXP",
-//             "username": "user2",
-//             "avatar": "",
-//             "storename": "banggood",
-//             "category_slug": "toys",
-//             "cnt_comment": 0,
-//             "cnt_like": null
+
 Deal.find = (data) => {
     var start_at = data.start_at;
     var length = data.length;
