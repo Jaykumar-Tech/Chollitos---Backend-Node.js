@@ -235,7 +235,7 @@ Deal.get = (id) => {
                     reject({ message: "Deal Not Found" })
                     return
                 }
-                resolve(rows);
+                resolve(rows[0]);
             });
     });
 };
