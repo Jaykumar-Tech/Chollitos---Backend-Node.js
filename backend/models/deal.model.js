@@ -73,7 +73,7 @@ Deal.find = (data) => {
     var filter = buildFilter(data) ;
     return new Promise((resolve, reject) => {
         client.query(`SELECT deal.id , deal.title, deal.type, 
-        deal.price_new, deal.price_low, deal.price_ship, deal.store_id, deal.deal_url, deal.image_url,
+        deal.price_new, deal.price_low, deal.price_ship, deal.store_id, deal.deal_url, deal.image_urls,
         deal.user_id, deal.category_id, deal.status, deal.start_date, deal.expires, deal.count_of_used, deal.vip, deal.code
         , user.username as username, user.avatar as avatar, store.name as storename, category.slug as category_slug,
         CASE
@@ -168,6 +168,7 @@ Deal.count = (data) => {
 Deal.get = (id) => {
     return new Promise((resolve, reject) => {
         client.query(`SELECT deal.*, user.username as username, user.avatar as avatar, user.level as level, store.name as storename , category.slug as category_slug,
+        blog.html as info_html,
         CASE
             WHEN ISNULL(A.count_comment) THEN 0
             ELSE A.count_comment
@@ -201,6 +202,9 @@ Deal.get = (id) => {
         LEFT JOIN
         store
         on store.id = deal.store_id
+        LEFT JOIN
+        blog
+        on store.info_html = blog.id
         LEFT JOIN
         category
         on category.id = deal.category_id
