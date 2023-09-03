@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
     if (token && token.startsWith('Bearer ')) {
         token = token.slice(7, token.length);
     }
-    if (req.method == "POST" && req.url == "/deal/find") {
+    if (req.method == "POST" && req.url == "/api/deal/find") {
         if ( req.body.vip && req.body.vip > 0 ) {
             if (token) {
                 try {
