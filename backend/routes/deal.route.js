@@ -11,7 +11,7 @@ const AuthGuard = require('../middleware/auth.middleware');
 
 router.post('/add', AuthGuard, dealCreate, validate(schema.add), ErrorHandler(DealController.create));
 router.post('/edit', AuthGuard, validate(schema.edit), ErrorHandler(DealController.edit));
-router.post('/find', dealFilter, validate(schema.find), ErrorHandler(DealController.find));
+router.post('/find', dealFilter, AuthGuard, validate(schema.find), ErrorHandler(DealController.find));
 router.post('/count', dealFilter, validate(schema.count), ErrorHandler(DealController.count));
 router.get('/get/:id', validate(schema.get), ErrorHandler(DealController.get));
 router.get('/usecode/:id', ErrorHandler(DealController.useCode));

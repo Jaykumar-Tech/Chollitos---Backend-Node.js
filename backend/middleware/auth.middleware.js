@@ -2,11 +2,12 @@ const cacheUtil = require('../utils/cache.util');
 const jwtUtil = require('../utils/jwt.util');
 
 module.exports = async (req, res, next) => {
+    console.log( req.method, req.originalUrl ) ;
     let token = req.headers.authorization;
     if (token && token.startsWith('Bearer ')) {
         token = token.slice(7, token.length);
     }
-    if (req.method == "POST" && req.url == "/api/deal/find") {
+    if (req.method == "POST" && req.originalUrl == "/api/deal/find") {
         if ( req.body.vip && req.body.vip > 0 ) {
             if (token) {
                 try {
@@ -25,7 +26,7 @@ module.exports = async (req, res, next) => {
                     return res.status(401).json({ message: 'Unauthorized' });
                 }
             } else {
-                return res.status(400).json({ message: 'You are not allowed to get VIP bargains' })
+                return res.status(400).json({ message: 'Authorization header is missing.' })
             }
         } else {
             next() ;
