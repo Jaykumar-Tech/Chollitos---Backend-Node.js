@@ -27,7 +27,7 @@ Comment.create = (data) => {
 
 Comment.get = (id) => {
     return new Promise((resolve, reject) => {
-        client.query(`SELECT comment.id as id, user.avatar as avatar, user.username as username,
+        client.query(`SELECT comment.id as id, user.id as user_id, user.avatar as avatar, user.username as username,
         comment.date as start_date , blog.html as description, 
         CASE
             WHEN ISNULL(C.count_dislike) AND ISNULL(B.count_like) THEN 0
