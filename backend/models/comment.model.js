@@ -62,7 +62,7 @@ Comment.find = (data) => {
         LEFT JOIN
         user
         ON user.id = comment.user_id
-         WHERE comment.type=? AND comment.dest_id=? ORDER BY date`,
+         WHERE comment.type=? AND comment.dest_id=? ORDER BY date DESC`,
             [data.type, data.dest_id], (err, rows) => {
                 if (err) {
                     reject(err);
