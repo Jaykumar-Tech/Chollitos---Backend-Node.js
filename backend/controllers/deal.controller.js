@@ -91,8 +91,11 @@ exports.useCode = async (req, res) => {
 exports.upload = async (req, res) => {
     try {
         console.log(req.file.path)
-        await load(req.file.path);
-        return res.redirect("/")
+        var result = await load(req.file.path);
+        return res.json({
+            message: "success",
+            data: result + " deals created"
+        })
     } catch (error) {
         return res.status(400).send({
             message: error.message
@@ -129,5 +132,5 @@ const load = async (filepath) => {
             expires: "9999-12-31"
         })
     }
-    return deals;
+    return deals.length;
 }
