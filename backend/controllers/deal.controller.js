@@ -87,7 +87,6 @@ exports.useCode = async (req, res) => {
     }
 }
 
-
 exports.upload = async (req, res) => {
     try {
         console.log(req.file.path)
@@ -102,7 +101,6 @@ exports.upload = async (req, res) => {
         })
     }
 }
-
 
 const load = async (filepath, user_id) => {
     const workbook = XLSX.readFile(filepath);
@@ -121,8 +119,8 @@ const load = async (filepath, user_id) => {
             title: deal.title,
             description: deal.description,
             store_id: store_id,
-            price_new: deal.pvp,
-            price_low: deal.price,
+            price_new: deal.price_old,
+            price_low: deal.price_new,
             image_urls: JSON.stringify([deal.image_url]),
             deal_url: deal.deal_url,
             category_id: -1,
