@@ -12,14 +12,49 @@ Comment.create = (data) => {
                     reject(err);
                     return;
                 }
-                resolve(row);
+                else {
+                    Comment.get(row.insertId)
+                    .then(response=>{
+                        return resolve(response);
+                    })
+                    .catch(err=>{
+                        return reject(err)
+                    })
+                }
             });
     })
 };
 
 Comment.get = (id) => {
     return new Promise((resolve, reject) => {
-        client.query("SELECT * FROM comment WHERE id=?", [id], (err, rows) => {
+        client.query(`SELECT comment.id as id, user.avatar as avatar, user.username as username,
+        comment.date as start_date , blog.html as description, 
+        CASE
+            WHEN ISNULL(C.count_dislike) AND ISNULL(B.count_like) THEN 0
+            WHEN ISNULL(C.count_dislike) THEN B.count_like
+            WHEN ISNULL(B.count_like) THEN -1 * C.count_dislike
+            ELSE B.count_like - C.count_dislike
+        END AS cnt_like 
+        FROM comment
+        LEFT JOIN
+        (select dest_id, count(*) as count_like
+        From likes
+        where type="comment" AND is_like=1
+        GROUP BY dest_id) B 
+        ON comment.id = B.dest_id
+        LEFT JOIN
+        (select dest_id, count(*) as count_dislike
+        From likes
+        where type="comment" AND is_like=0
+        GROUP BY dest_id) C 
+        ON comment.id = C.dest_id
+        LEFT JOIN
+        blog 
+        ON blog.id = comment.blog_id
+        LEFT JOIN
+        user
+        ON user.id = comment.user_id
+         WHERE comment.id=?`, [id], (err, rows) => {
             if (err) {
                 reject(err);
                 return;

@@ -12,7 +12,7 @@ exports.create = async (req, res) => {
         var result = await CommentModel.create(req.body) ;
         return res.json({
             message: "success",
-            data: result.insertId
+            data: result
         })
     } catch (error) {
         return res.status(400).send({
