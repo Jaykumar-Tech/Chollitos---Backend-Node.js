@@ -95,7 +95,7 @@ Store.getByName = (name) => {
         WHERE type!="deal" ${!vip? " AND vip=0": ""}
         GROUP BY store_id) S
         ON S.store_id=store.id 
-        WHERE store.name=?`, [name, vip],
+        WHERE store.name=?`, [name],
             (err, rows) => {
                 if (err) {
                     reject(err);

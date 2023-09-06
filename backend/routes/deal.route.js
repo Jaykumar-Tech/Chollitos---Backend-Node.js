@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const multer = require("multer")
 
 const DealController = require('../controllers/deal.controller');
 const ErrorHandler = require('../middleware/error.middleware');
@@ -9,6 +10,19 @@ const validate = require('../utils/validator.util');
 const {dealFilter, dealCreate} = require("../middleware/deal.middleware");
 const AuthGuard = require('../middleware/auth.middleware'); 
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, __dirname + "/../resource/"); // Specify the destination folder
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname); // Specify the filename
+    }
+});
+const upload = multer({
+    storage: storage
+});
+
+router.post('/upload', upload.single('file'),  ErrorHandler(DealController.upload));
 router.post('/add', AuthGuard, dealCreate, validate(schema.add), ErrorHandler(DealController.create));
 router.post('/edit', AuthGuard, validate(schema.edit), ErrorHandler(DealController.edit));
 router.post('/find', dealFilter, AuthGuard, validate(schema.find), ErrorHandler(DealController.find));

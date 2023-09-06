@@ -7,9 +7,9 @@ exports.create = async (req, res) => {
             var deal = await DealModel.get(req.body.dest_id) ;
             console.log(deal, req.body)
             if ( deal.user_id == req.body.user_id ) {
-                throw new Error("Liking your bargain.")
+                throw new Error("Already Set.")
             }
-        }
+        } 
         var result = await LikeModel.create(req.body) ;
         return res.json({
             message: "success",

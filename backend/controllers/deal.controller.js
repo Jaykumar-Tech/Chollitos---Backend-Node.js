@@ -1,4 +1,7 @@
-DealModel = require("../models/deal.model");
+const DealModel = require("../models/deal.model");
+const StoreModel = require("../models/store.model");
+const XLSX = require('xlsx');
+const moment = require('moment')
 
 exports.create = async (req, res) => {
     try {
@@ -82,4 +85,49 @@ exports.useCode = async (req, res) => {
             message: error.message
         })
     }
+}
+
+
+exports.upload = async (req, res) => {
+    try {
+        console.log(req.file.path)
+        await load(req.file.path);
+        return res.redirect("/")
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+
+const load = async (filepath) => {
+    const workbook = XLSX.readFile(filepath);
+    const worksheet = workbook.Sheets['Sheet1']; // Replace 'Sheet1' with the actual sheet name
+    const deals = XLSX.utils.sheet_to_json(worksheet);
+    for (deal of deals) {
+        var store_id;
+        try {
+            var result = await StoreModel.getByName(deal.store);
+            store_id = result.id
+        } catch (error) {
+            var result = await StoreModel.create({ name: deal.store });
+            store_id = result.insertId;
+        }
+        DealModel.create({
+            title: deal.title,
+            description: deal.description,
+            store_id: store_id,
+            price_new: deal.pvp,
+            price_low: deal.price,
+            image_urls: JSON.stringify([deal.image_url]),
+            deal_url: deal.deal_url,
+            category_id: -1,
+            user_id: 1,
+            type: "deal",
+            start_date: moment.utc().format("YYYY-MM-DD"),
+            expires: "9999-12-31"
+        })
+    }
+    return deals;
 }
