@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 06/09/2023 16:20:49
+ Date: 07/09/2023 00:31:32
 */
 
 SET NAMES utf8mb4;
@@ -61,7 +61,7 @@ CREATE TABLE `blog`  (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `html` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of blog
@@ -86,6 +86,13 @@ INSERT INTO `blog` VALUES (26, '\r\n<h1>Hello Everyone</h1>This is blog, Do you 
 INSERT INTO `blog` VALUES (27, '\r\n<h1>Hello Everyone</h1>This is blog, Do you want to see image<img src=\'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829\'>');
 INSERT INTO `blog` VALUES (28, '\r\n<h1>Hello Everyone</h1>This is blog, Do you want to see image<img src=\'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829\'>');
 INSERT INTO `blog` VALUES (29, '\r\n<h1>Hello Everyone</h1>This is blog, Do you want to see image<img src=\'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829\'>');
+INSERT INTO `blog` VALUES (30, '<h1>Hello Everyone</h1> This is my slogan.');
+INSERT INTO `blog` VALUES (31, '<h1>Hello Everyone</h1> This is my slogan.');
+INSERT INTO `blog` VALUES (32, '<h1>Hello Everyone</h1> This is my slogan.');
+INSERT INTO `blog` VALUES (33, '<h1>Hello Everyone</h1> This is my slogan.');
+INSERT INTO `blog` VALUES (34, '<h1>Hello Everyone</h1> This is my slogan.');
+INSERT INTO `blog` VALUES (35, '<h1>Hello Everyone</h1> This is my slogan.');
+INSERT INTO `blog` VALUES (36, '<h1>Hello Everyone</h1> This is my slogan.');
 
 -- ----------------------------
 -- Table structure for category
@@ -151,7 +158,7 @@ CREATE TABLE `comment`  (
   `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 40 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of comment
@@ -189,6 +196,9 @@ INSERT INTO `comment` VALUES (32, 3, 41, 11, 'deal', '2023-08-01 00:00:00');
 INSERT INTO `comment` VALUES (33, 3, 41, 11, 'deal', '2023-08-02 00:00:00');
 INSERT INTO `comment` VALUES (34, 3, 41, 11, 'deal', '2023-08-06 00:00:00');
 INSERT INTO `comment` VALUES (35, 3, 41, 11, 'deal', '2023-09-06 07:55:25');
+INSERT INTO `comment` VALUES (37, 3, 41, 34, 'deal', '2023-09-06 13:06:18');
+INSERT INTO `comment` VALUES (38, 3, 41, 35, 'deal', '2023-09-06 15:02:41');
+INSERT INTO `comment` VALUES (39, 3, 41, 36, 'deal', '2023-09-06 15:03:10');
 
 -- ----------------------------
 -- Table structure for deal
@@ -281,19 +291,6 @@ INSERT INTO `deal` VALUES (75, 'lkea gift card of 50$ for only 43.11 in Eneba', 
 INSERT INTO `deal` VALUES (76, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'free', NULL, NULL, 0, 10, 'https://www.amazon.es/deal/13545001', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829\",\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718\",\"https://www.french-bandit.com/cdn/shop/files/packshot-pendentifs-lumineux1_400x.jpg?v=1686912148\",\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 3, 10, 1, '2023-07-31', '2023-09-12', 9, 1, 'CODE EXP');
 INSERT INTO `deal` VALUES (77, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'deal', 100, 20, 0, 10, 'https://www.amazon.es/deal/13545001', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829\",\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718\",\"https://www.french-bandit.com/cdn/shop/files/packshot-pendentifs-lumineux1_400x.jpg?v=1686912148\",\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 3, 11, 1, '2023-08-15', '2023-09-06', 0, 0, NULL);
 INSERT INTO `deal` VALUES (78, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'discount_fixed', 20, NULL, 0, 10, 'https://www.amazon.es/deal/13545001', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829\",\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718\",\"https://www.french-bandit.com/cdn/shop/files/packshot-pendentifs-lumineux1_400x.jpg?v=1686912148\",\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 3, 12, 1, '2023-08-14', '2023-09-04', 7, 0, 'CODE EXP');
-INSERT INTO `deal` VALUES (119, 'title 1', 'description 1', 'deal', 200, 100, NULL, 20, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (120, 'title 2', 'description 2', 'deal', 201, 101, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (121, 'title 3', 'description 3', 'deal', 202, 102, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (122, 'title 4', 'description 4', 'deal', 203, 103, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (123, 'title 5', 'description 5', 'deal', 204, 104, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (124, 'title 6', 'description 6', 'deal', 205, 105, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (125, 'title 7', 'description 7', 'deal', 206, 106, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (126, 'title 8', 'description 8', 'deal', 207, 107, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (127, 'title 9', 'description 9', 'deal', 208, 108, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (128, 'title 10', 'description 10', 'deal', 209, 109, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (129, 'title 11', 'description 11', 'deal', 210, 110, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (130, 'title 12', 'description 12', 'deal', 211, 111, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
-INSERT INTO `deal` VALUES (131, 'title 13', 'description 13', 'deal', 212, 112, NULL, 21, 'https://google.come', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 1, -1, 1, '2023-09-05', '9999-12-31', 0, 0, NULL);
 
 -- ----------------------------
 -- Table structure for likes
