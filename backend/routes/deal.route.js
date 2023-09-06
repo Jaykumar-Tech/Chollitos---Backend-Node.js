@@ -22,7 +22,7 @@ const upload = multer({
     storage: storage
 });
 
-router.post('/upload', upload.single('file'),  ErrorHandler(DealController.upload));
+router.post('/upload', AuthGuard, upload.single('file'),  ErrorHandler(DealController.upload));
 router.post('/add', AuthGuard, dealCreate, validate(schema.add), ErrorHandler(DealController.create));
 router.post('/edit', AuthGuard, validate(schema.edit), ErrorHandler(DealController.edit));
 router.post('/find', dealFilter, AuthGuard, validate(schema.find), ErrorHandler(DealController.find));

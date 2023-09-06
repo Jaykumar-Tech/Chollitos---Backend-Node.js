@@ -91,7 +91,7 @@ exports.useCode = async (req, res) => {
 exports.upload = async (req, res) => {
     try {
         console.log(req.file.path)
-        var result = await load(req.file.path);
+        var result = await load(req.file.path, req.body.user_id);
         return res.json({
             message: "success",
             data: result + " deals created"
@@ -104,7 +104,7 @@ exports.upload = async (req, res) => {
 }
 
 
-const load = async (filepath) => {
+const load = async (filepath, user_id) => {
     const workbook = XLSX.readFile(filepath);
     const worksheet = workbook.Sheets['Sheet1']; // Replace 'Sheet1' with the actual sheet name
     const deals = XLSX.utils.sheet_to_json(worksheet);
@@ -126,7 +126,7 @@ const load = async (filepath) => {
             image_urls: JSON.stringify([deal.image_url]),
             deal_url: deal.deal_url,
             category_id: -1,
-            user_id: 1,
+            user_id: user_id,
             type: "deal",
             start_date: moment.utc().format("YYYY-MM-DD"),
             expires: "9999-12-31"
