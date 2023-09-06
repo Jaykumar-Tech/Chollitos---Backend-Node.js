@@ -4,14 +4,15 @@ CommentModel = require('../models/comment.model')
 
 exports.create = async (req, res) => {
     try {
+        var deal, comment;
         if ( req.body.type=='deal') {
-            var deal = await DealModel.get(req.body.dest_id) ;
+            deal = await DealModel.get(req.body.dest_id) ;
             if ( deal.user_id == req.body.user_id ) {
                 throw new Error("You can't vote your deal")
             }
         } 
         if ( req.body.type=='comment') {
-            var comment = await CommentModel.get(req.body.dest_id) ;
+            comment = await CommentModel.get(req.body.dest_id) ;
             if ( comment.user_id == req.body.user_id ) {
                 throw new Error("You can't vote your comment")
             }
@@ -19,7 +20,9 @@ exports.create = async (req, res) => {
         var result = await LikeModel.create(req.body) ;
         return res.json({
             message: "success",
-            data: result.insertId
+            data: result.insertId,
+            deal: deal,
+            comment: comment
         })
     } catch (error) {
         return res.status(400).send({
