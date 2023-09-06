@@ -91,7 +91,7 @@ exports.useCode = async (req, res) => {
 exports.upload = async (req, res) => {
     try {
         console.log(req.file.path)
-        var result = await load(req.file.path, req.body.user_id);
+        var result = await load(req.file.path, req.user.id);
         return res.json({
             message: "success",
             data: result + " deals created"
