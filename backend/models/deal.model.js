@@ -87,6 +87,7 @@ Deal.find = (data) => {
             ELSE A.count_comment
         END AS cnt_comment,
         CASE
+            WHEN ISNULL(C.count_dislike) AND ISNULL(B.count_like) THEN 0
             WHEN ISNULL(C.count_dislike) THEN B.count_like
             WHEN ISNULL(B.count_like) THEN -1 * C.count_dislike
             ELSE B.count_like - C.count_dislike
