@@ -127,7 +127,8 @@ const load = async (filepath, user_id) => {
             deal_url: deal.deal_url,
             category_id: -1,
             user_id: user_id,
-            type: "deal",
+            type: deal.type,
+            vip: deal.vip,
             start_date: moment.utc().format("YYYY-MM-DD"),
             expires: "9999-12-31"
         })
