@@ -1,13 +1,19 @@
 LikeModel = require("../models/like.model");
 DealModel = require('../models/deal.model')
+CommentModel = require('../models/comment.model')
 
 exports.create = async (req, res) => {
     try {
         if ( req.body.type=='deal') {
             var deal = await DealModel.get(req.body.dest_id) ;
-            console.log(deal, req.body)
             if ( deal.user_id == req.body.user_id ) {
-                throw new Error("Already Set.")
+                throw new Error("You can't vote your deal")
+            }
+        } 
+        if ( req.body.type=='comment') {
+            var comment = await CommentModel.get(req.body.dest_id) ;
+            if ( comment.user_id == req.body.user_id ) {
+                throw new Error("You can't vote your comment")
             }
         } 
         var result = await LikeModel.create(req.body) ;
