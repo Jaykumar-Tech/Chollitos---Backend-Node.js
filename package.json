@@ -27,10 +27,5 @@
   "bugs": {
     "url": "https://github.com/daltonbreka/nodejs-mysql-firebase-payment-backend-chollo/issues"
   },
-  "homepage": "https://github.com/daltonbreka/nodejs-mysql-firebase-payment-backend-chollo#readme",
-  "dependencies": {
-    "express-sslify": "^1.2.0",
-    "moment": "^2.29.4",
-    "xlsx": "^0.18.5"
-  }
+  "homepage": "https://github.com/daltonbreka/nodejs-mysql-firebase-payment-backend-chollo#readme"
 }
