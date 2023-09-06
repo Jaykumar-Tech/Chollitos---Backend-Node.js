@@ -35,7 +35,8 @@ Comment.get = (id) => {
 
 Comment.find = (data) => {
     return new Promise((resolve, reject) => {
-        client.query(`SELECT comment.*, blog.html as blog, 
+        client.query(`SELECT comment.id as id, user.avatar as avatar, user.username as username,
+        comment.date as start_date , blog.html as description, 
         CASE
             WHEN ISNULL(C.count_dislike) AND ISNULL(B.count_like) THEN 0
             WHEN ISNULL(C.count_dislike) THEN B.count_like
@@ -58,6 +59,9 @@ Comment.find = (data) => {
         LEFT JOIN
         blog 
         ON blog.id = comment.blog_id
+        LEFT JOIN
+        user
+        ON user.id = comment.user_id
          WHERE comment.type=? AND comment.dest_id=? ORDER BY date`,
             [data.type, data.dest_id], (err, rows) => {
                 if (err) {
