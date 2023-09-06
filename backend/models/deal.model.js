@@ -59,6 +59,12 @@ const buildFilter = (data) => {
             ELSE B.count_like - C.count_dislike
         END
     ) > 1`);
+    if (data.feature == "commented") filter.push(`(
+        CASE
+            WHEN ISNULL(A.count_comment) THEN 0
+            ELSE A.count_comment
+        END 
+    ) > 0`);
     if ( data.search && data.search.length > 0 ) {
         filter.push(`title LIKE '%${data.search}%'`);
     }
