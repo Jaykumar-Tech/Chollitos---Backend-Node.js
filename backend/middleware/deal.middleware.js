@@ -20,7 +20,10 @@ exports.dealCreate = async (req, res, next) => {
         req.body.price_new = req.body.price_old;
         delete req.body.price_old;
     }
-    if (req.body.hasOwnProperty("start_date"))
+    if (req.body.hasOwnProperty("start_date")) {
         delete req.body.start_date;
+        req.body.start_date = new Date(new Date().toUTCString()).toISOString() ;
+    }
+
     next();
 }

@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 07/09/2023 12:32:13
+ Date: 07/09/2023 12:35:35
 */
 
 SET NAMES utf8mb4;
@@ -159,7 +159,7 @@ CREATE TABLE `comment`  (
   `dest_id` int(4) NOT NULL,
   `blog_id` int(4) NOT NULL,
   `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `date` timestamp(0) NULL DEFAULT convert_tz,
+  `date` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
@@ -222,7 +222,7 @@ CREATE TABLE `deal`  (
   `user_id` int(4) NULL DEFAULT NULL,
   `category_id` int(4) NULL DEFAULT NULL,
   `status` int(2) NULL DEFAULT 0,
-  `start_date` timestamp(0) NULL DEFAULT convert_tz ON UPDATE CURRENT_TIMESTAMP(0),
+  `start_date` timestamp(0) NULL DEFAULT NULL,
   `expires` date NULL DEFAULT NULL,
   `count_of_used` int(4) NULL DEFAULT 0,
   `vip` int(2) NULL DEFAULT 0,
