@@ -37,7 +37,7 @@ Deal.edit = (id, data) => {
 
 const buildFilter = (data) => {
     var filter = [] ;
-    filter.push("start_date <= UTC_DATE()")
+    // filter.push("start_date <= UTC_DATE()")
     if (data.type == "free") filter.push(`type='free'`)
     if (data.type == "deal") filter.push(`type='deal'`)
     if (data.type == "discount") filter.push(`type!='deal'`)

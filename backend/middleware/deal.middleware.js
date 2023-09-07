@@ -15,10 +15,12 @@ exports.dealFilter = async (req, res, next) => {
 exports.dealCreate = async (req, res, next) => {
     if (!req.body.hasOwnProperty("expires"))
         req.body.expires = "2100-12-31";
-    if ( req.body.hasOwnProperty("price_old") ) {
-        req.body.price_low = req.body.price_new ;
-        req.body.price_new = req.body.price_old ;
-        delete req.body.price_old ;
+    if (req.body.hasOwnProperty("price_old")) {
+        req.body.price_low = req.body.price_new;
+        req.body.price_new = req.body.price_old;
+        delete req.body.price_old;
     }
+    if (req.body.hasOwnProperty("start_date"))
+        delete req.body.start_date;
     next();
 }
