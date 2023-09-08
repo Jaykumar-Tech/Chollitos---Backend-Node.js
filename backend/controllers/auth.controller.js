@@ -195,10 +195,15 @@ exports.login = async (req, res) => {
                     avatar: user.avatar
                 }
             });
-        } else
+        } else if ( !user.status ) {
             return res.status(400).json({
-                message: "Unauthorized."
+                message: "Your account is not available!"
             })
+        } else {
+            return res.status(400).json({
+                message: "Wrong password!"
+            })
+        }
     }
     catch (error) {
         return res.status(400).send({
