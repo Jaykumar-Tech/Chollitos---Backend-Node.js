@@ -120,7 +120,7 @@ Deal.find = (data) => {
         LEFT JOIN
         category
         on category.id = deal.category_id
-        WHERE ${filter} ORDER BY start_date DESC LIMIT ? OFFSET ?;`,
+        WHERE ${filter} ORDER BY start_date DESC, deal.id ASC LIMIT ? OFFSET ?;`,
             [length, start_at],
             (err, rows) => {
                 if (err) {
