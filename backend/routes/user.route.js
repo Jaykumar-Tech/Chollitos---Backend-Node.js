@@ -15,6 +15,7 @@ router.get('/callback',                                          ErrorHandler(Au
 router.post('/resend_code',                                          ErrorHandler(AuthController.resendCode)); // get callback
 router.post('/register',                                        ErrorHandler(AuthController.register)); // register with email and password
 router.post('/verify_code',                                        ErrorHandler(AuthController.verifyCode)); // register with email and password
+router.get('/delete/:id',                                        ErrorHandler(AuthController.remove)); // register with email and password
 
 // Login
 router.post('/login',                                          ErrorHandler(AuthController.login)); // exist email

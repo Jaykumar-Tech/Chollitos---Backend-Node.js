@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 07/09/2023 12:43:08
+ Date: 08/09/2023 09:53:41
 */
 
 SET NAMES utf8mb4;
@@ -107,47 +107,48 @@ CREATE TABLE `category`  (
   `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `parent_id` int(4) NULL DEFAULT NULL,
   `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `status` int(2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES (1, 'babies and children', 'babies-and-children', -1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (2, 'Feeding bottle', 'feeding-bottle', 1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (3, 'Dr Brown\'s', 'dr-brown\'s', 2, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (4, 'Philips Avent Babybottles', 'philips-avent-babybottles', 2, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (5, 'Difrax', 'difrax', 2, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (6, 'free layettes', 'free-layettes', 1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (7, 'Strollers and strollers', 'strollers-and-strollers', 1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (8, 'bugaboo', 'bugaboo', 7, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (9, 'Chicco buggy', 'chicco-buggy', 7, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (10, 'Toys', 'toys', 1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (11, 'Cards and board games', 'cards-and-board-games', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (12, 'Fisher-Price', 'fisher-price', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (13, 'Funko Pop!', 'funko-pop', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (14, 'hot wheels', 'hot-wheels', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (15, 'Block & Building Toys', 'block-building-toys', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (16, 'outdoor toys', 'outdoor-toys', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (17, 'LOL Surprise', 'lol-surprise', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (18, 'dolls', 'dolls', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (19, 'Food and drink', 'food-and-drink', -1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (20, 'Feeding', 'feeding', 19, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (21, 'Chocolate', 'chocolate', 19, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (22, 'food at home', 'food-at-home', 19, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (23, 'Sport Nutrition', 'sport-nutrition', 19, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (24, 'Restaurants', 'restaurants', 19, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (25, 'electronics', 'electronics', -1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (26, 'data storage', 'data-storage', 25, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (27, 'Audio & HiFi', 'audio-hifi', 25, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (28, 'power banks', 'power-banks', 25, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (29, 'batteries', 'batteries', 25, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (30, 'Free', 'free', -1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (31, 'raffles', 'raffles', 30, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (32, 'Home', 'home', -1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (33, 'Garden', 'garden', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (34, 'Furniture', 'furniture', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
-INSERT INTO `category` VALUES (35, 'Home applicances', 'home-applicances', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829');
+INSERT INTO `category` VALUES (1, 'babies and children', 'babies-and-children', -1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (2, 'Feeding bottle', 'feeding-bottle', 1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (3, 'Dr Brown\'s', 'dr-brown\'s', 2, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (4, 'Philips Avent Babybottles', 'philips-avent-babybottles', 2, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (5, 'Difrax', 'difrax', 2, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (6, 'free layettes', 'free-layettes', 1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (7, 'Strollers and strollers', 'strollers-and-strollers', 1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (8, 'bugaboo', 'bugaboo', 7, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (9, 'Chicco buggy', 'chicco-buggy', 7, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (10, 'Toys', 'toys', 1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (11, 'Cards and board games', 'cards-and-board-games', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (12, 'Fisher-Price', 'fisher-price', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (13, 'Funko Pop!', 'funko-pop', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (14, 'hot wheels', 'hot-wheels', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (15, 'Block & Building Toys', 'block-building-toys', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (16, 'outdoor toys', 'outdoor-toys', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (17, 'LOL Surprise', 'lol-surprise', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (18, 'dolls', 'dolls', 10, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (19, 'Food and drink', 'food-and-drink', -1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (20, 'Feeding', 'feeding', 19, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (21, 'Chocolate', 'chocolate', 19, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (22, 'food at home', 'food-at-home', 19, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (23, 'Sport Nutrition', 'sport-nutrition', 19, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (24, 'Restaurants', 'restaurants', 19, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (25, 'electronics', 'electronics', -1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (26, 'data storage', 'data-storage', 25, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (27, 'Audio & HiFi', 'audio-hifi', 25, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (28, 'power banks', 'power-banks', 25, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (29, 'batteries', 'batteries', 25, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (30, 'Free', 'free', -1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (31, 'raffles', 'raffles', 30, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (32, 'Home', 'home', -1, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (33, 'Garden', 'garden', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (34, 'Furniture', 'furniture', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (35, 'Home applicances', 'home-applicances', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
 
 -- ----------------------------
 -- Table structure for comment
@@ -447,37 +448,32 @@ CREATE TABLE `store`  (
   `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `info_html` int(4) NULL DEFAULT NULL,
-  `tip_id` int(4) NULL DEFAULT NULL,
-  `stories_id` int(4) NULL DEFAULT NULL,
-  `about_id` int(4) NULL DEFAULT NULL,
-  `faq_id` int(4) NULL DEFAULT NULL,
-  `howto_id` int(4) NULL DEFAULT NULL,
-  `didyou_id` int(4) NULL DEFAULT NULL,
+  `status` int(4) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of store
 -- ----------------------------
-INSERT INTO `store` VALUES (3, 'adidas', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 10, 12, 13, 14, 15, 16, 17);
-INSERT INTO `store` VALUES (4, 'AliExpress', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 12, 13, 23, 21, 11, 12, 23);
-INSERT INTO `store` VALUES (5, 'Amazon', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 11, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (6, 'Manzana', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 22, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (7, 'Asos', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 12, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (8, 'catch it', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 14, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (9, 'Notices', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 13, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (10, 'banggood', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 15, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (11, 'booking', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 16, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (12, 'Burger', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 17, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (13, 'BurgerKing', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 18, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (14, 'AC', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 19, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (15, 'cabify', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 20, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (16, 'Carrefour', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 21, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (17, 'cheerz', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 22, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (18, 'Chinese', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 23, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (19, 'Chinese', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 25, 12, 15, 11, 22, 21, 11);
-INSERT INTO `store` VALUES (20, 'french', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `store` VALUES (21, 'storename', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `store` VALUES (3, 'adidas', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 10, 1);
+INSERT INTO `store` VALUES (4, 'AliExpress', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 12, 1);
+INSERT INTO `store` VALUES (5, 'Amazon', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 11, 1);
+INSERT INTO `store` VALUES (6, 'Manzana', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 22, 1);
+INSERT INTO `store` VALUES (7, 'Asos', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 12, 1);
+INSERT INTO `store` VALUES (8, 'catch it', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 14, 1);
+INSERT INTO `store` VALUES (9, 'Notices', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 13, 1);
+INSERT INTO `store` VALUES (10, 'banggood', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 15, 1);
+INSERT INTO `store` VALUES (11, 'booking', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 16, 1);
+INSERT INTO `store` VALUES (12, 'Burger', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 17, 1);
+INSERT INTO `store` VALUES (13, 'BurgerKing', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 18, 1);
+INSERT INTO `store` VALUES (14, 'AC', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 19, 1);
+INSERT INTO `store` VALUES (15, 'cabify', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 20, 1);
+INSERT INTO `store` VALUES (16, 'Carrefour', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 21, 1);
+INSERT INTO `store` VALUES (17, 'cheerz', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 22, 1);
+INSERT INTO `store` VALUES (18, 'Chinese', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 23, 1);
+INSERT INTO `store` VALUES (19, 'Chinese', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 25, 1);
+INSERT INTO `store` VALUES (20, 'french', NULL, NULL, NULL, 1);
+INSERT INTO `store` VALUES (21, 'storename', NULL, NULL, NULL, 1);
 
 -- ----------------------------
 -- Table structure for user
@@ -496,7 +492,7 @@ CREATE TABLE `user`  (
   `level` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
@@ -505,5 +501,7 @@ INSERT INTO `user` VALUES (1, 'user1', 'daltonchua3@outlook.com', '$2a$10$AS9OnM
 INSERT INTO `user` VALUES (2, 'user2', 'daltonchua2@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (3, 'user3', 'daltonchua@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (4, 'vip', 'v@v.com', '$2a$10$IejCcbRwK9UYC4iUJmcEteJDmOfV16GIUkKjVX.GEYNHXnTE.a/Ku', NULL, 'vip', NULL, 1, 0, 'Beginner', NULL);
+INSERT INTO `user` VALUES (31, 'vip', 'tomsolon@outlook.com', '$2a$10$OwXRk17u.teoxt17uGeI0e.WKqaOAtFfCcAYhVJ4rZ1B8YxeNPVme', NULL, 'customer', '4793', 0, 0, 'Beginner', NULL);
+INSERT INTO `user` VALUES (36, 'vip', 'joneyato@outlook.com', '$2a$10$mcfvdFi1KcqPt32KDZE8QuqvROjSQzfCT1Jm7voAjyzwJWJfYfHPO', '2000-01-11', 'customer', '6982', 1, 0, 'Beginner', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -29,6 +29,7 @@ router.post('/find', dealFilter, AuthGuard, validate(schema.find), ErrorHandler(
 router.post('/count', dealFilter, validate(schema.count), ErrorHandler(DealController.count));
 router.get('/get/:id', validate(schema.get), ErrorHandler(DealController.get));
 router.get('/usecode/:id', ErrorHandler(DealController.useCode));
+router.get('/delete/:id',                 ErrorHandler(DealController.remove)); // register with email and password
 
 router.all('*', (req, res) => res.status(400).json({ message: 'Bad Request.' }))
 

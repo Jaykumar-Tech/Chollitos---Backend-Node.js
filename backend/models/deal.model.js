@@ -258,4 +258,21 @@ Deal.useCode = (id) => {
     });
 };
 
+
+Deal.remove = (id) => {
+    return new Promise((resolve, reject) => {
+        client.query("UPDATE deal SET status = 0 WHERE id = ?", id, (err, res) => {
+            if (err) {
+                reject(err);
+                return;
+            } else if (res.affectedRows == 0) {
+                reject({ message: "not_found" });
+                return;
+            } else {
+                resolve(res);
+            }
+        });
+    })
+};
+
 module.exports = Deal;

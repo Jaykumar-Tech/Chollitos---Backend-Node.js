@@ -12,6 +12,7 @@ router.post('/edit',             ErrorHandler(StoreController.edit));
 router.get('/get/:id',           ErrorHandler(StoreController.get));
 router.get('/getbyname/:name',           ErrorHandler(StoreController.getByName));
 router.get('/getall',           ErrorHandler(StoreController.getAll));
+router.get('/delete/:id',           ErrorHandler(StoreController.remove));
 
 router.all('*',  (req, res) => res.status(400).json({ message: 'Bad Request.'}))
 

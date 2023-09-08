@@ -6,6 +6,7 @@ const Store = function (store) {
 };
 
 Store.create = (data) => {
+    data.status = 1 ;
     return new Promise((resolve, reject) => {
         client.query("INSERT INTO store SET ?",
             data, (err, row) => {
@@ -108,6 +109,22 @@ Store.getByName = (name) => {
                 resolve(rows[0]);
             });
     });
+};
+
+Store.remove = (id) => {
+    return new Promise((resolve, reject) => {
+        client.query("UPDATE store SET status = 0 WHERE id = ?", id, (err, res) => {
+            if (err) {
+                reject(err);
+                return;
+            } else if (res.affectedRows == 0) {
+                reject({ message: "not_found" });
+                return;
+            } else {
+                resolve(res);
+            }
+        });
+    })
 };
 
 module.exports = Store;

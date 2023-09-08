@@ -87,4 +87,19 @@ Category.getBySlug = (slug) => {
     });
 }
 
+Category.remove = (id) => {
+    return new Promise((resolve, reject) => {
+        client.query("UPDATE category SET status = 0 WHERE id = ?", id, (err, res) => {
+            if (err) {
+                reject(err);
+                return;
+            } else if (res.affectedRows == 0) {
+                reject({ message: "not_found" });
+                return;
+            } else {
+                resolve(res);
+            }
+        });
+    })
+};
 module.exports = Category;

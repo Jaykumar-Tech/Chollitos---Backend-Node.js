@@ -271,6 +271,19 @@ exports.getAllUsers = async (req, res) => {
     }
 }
 
+exports.remove = async ( req, res ) => {
+    try {
+        await UserModel.remove(req.params.id);
+        return res.json({
+            message: "user deletion success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
 // if (email.indexOf("@gmail.com") != -1) {
 //     const transporter = nodemailer.createTransport({
 //         service: 'gmail',

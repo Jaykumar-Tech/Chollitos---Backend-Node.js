@@ -102,6 +102,19 @@ exports.upload = async (req, res) => {
     }
 }
 
+exports.remove = async ( req, res ) => {
+    try {
+        await DealModel.remove(req.params.id);
+        return res.json({
+            message: "deal deletion success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
 const load = async (filepath, user_id) => {
     const workbook = XLSX.readFile(filepath);
     const worksheet = workbook.Sheets['Sheet1']; // Replace 'Sheet1' with the actual sheet name
@@ -133,3 +146,4 @@ const load = async (filepath, user_id) => {
     }
     return deals.length;
 }
+

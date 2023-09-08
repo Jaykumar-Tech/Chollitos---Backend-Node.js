@@ -85,7 +85,7 @@ User.updateById = (id, user) => {
 };
 User.remove = (id) => {
     return new Promise((resolve, reject) => {
-        client.query("DELETE FROM user WHERE id = ?", id, (err, res) => {
+        client.query("UPDATE user SET status = 0 WHERE id = ?", id, (err, res) => {
             if (err) {
                 reject(err);
                 return;

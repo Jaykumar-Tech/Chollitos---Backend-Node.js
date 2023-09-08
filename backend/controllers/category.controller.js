@@ -55,3 +55,16 @@ exports.getBySlug = async (req, res) => {
         })
     }
 }
+
+exports.remove = async ( req, res ) => {
+    try {
+        await CategoryModel.remove(req.params.id);
+        return res.json({
+            message: "category deletion success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}

@@ -46,11 +46,12 @@ module.exports = {
         type: Joi.string().required().external(validateType),
         store_id: Joi.number(),
         deal_url: Joi.string(),
-        vip: Joi.string(),
         image_urls: Joi.string(),
         category_id: Joi.number(),
+        vip: Joi.number(),
         start_date: Joi.date(),
-        expires: Joi.date()
+        expires: Joi.date(),
+        code: Joi.string()
     }),
     find: Joi.object().keys({
         type: Joi.string().required().external(validateSearchType),

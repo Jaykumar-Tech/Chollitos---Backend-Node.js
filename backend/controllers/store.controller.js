@@ -69,3 +69,16 @@ exports.getByName = async (req, res) => {
         })
     }
 }
+
+exports.remove = async ( req, res ) => {
+    try {
+        await StoreModel.remove(req.params.id);
+        return res.json({
+            message: "store deletion success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
