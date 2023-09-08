@@ -16,59 +16,29 @@ var defaultApp = admin.initializeApp({
 
 const sendCode = async (email, code) => {
     new Promise(async (resolve, reject) => {
-        if (email.indexOf("@gmail.com") != -1) {
-            const transporter = nodemailer.createTransport({
-                service: 'gmail',
-                host: 'smtp.gmail.com',
-                port: 465,
-                // secure: true,
-                auth: {
-                    user: mailConfig.gmail,
-                    pass: mailConfig.gmail_password
-                },
-            });
-            try {
-                const mailOptions = {
-                    from: mailConfig.gmail,
-                    to: email,
-                    subject: 'Verification Code From Dac Rapide',
-                    text: `Your Verification Code is: <${code}>`,
-                };
+        const transporter = nodemailer.createTransport({
+            host: 'smtp-mail.outlook.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: mailConfig.mail,
+                pass: mailConfig.password
+            },
+        });
+        try {
+            const mailOptions = {
+                from: mailConfig.mail,
+                to: email,
+                subject: 'Verification Code From Chollitos.net',
+                html: `Your Verification Code is: ${code}`,
+            };
 
-                const info = await transporter.sendMail(mailOptions);
-                resolve({ message: "success", data: code })
-                return;
-            } catch (error) {
-                console.log(error);
-                reject(error)
-                return;
-            }
-        } else {
-            const transporter = nodemailer.createTransport({
-                host: 'smtp-mail.outlook.com',
-                port: 587,
-                secure: false,
-                auth: {
-                    user: mailConfig.mail,
-                    pass: mailConfig.password
-                },
-            });
-            try {
-                const mailOptions = {
-                    from: mailConfig.mail,
-                    to: email,
-                    subject: 'Verification Code From Chollo.es',
-                    html: `Your Verification Code is: <a href='${urlConfig.SERVER_URL}api/user/callback?code=${code}&&expires=${new Date().getTime()}&&email=${email}'>Verify Email</a>`,
-                };
-
-                const info = await transporter.sendMail(mailOptions);
-                resolve({ message: "success", data: code })
-                return;
-            } catch (error) {
-                console.log(error);
-                reject(error)
-                return;
-            }
+            const info = await transporter.sendMail(mailOptions);
+            resolve({ message: "success", data: code })
+            return;
+        } catch (error) {
+            reject(error)
+            return;
         }
     })
 }
@@ -101,7 +71,7 @@ exports.exist = async (req, res) => {
         })
     } catch (error) {
         return res.status(400).send({
-            error: error.message
+            message: error.message
         })
     }
 }
@@ -126,7 +96,7 @@ exports.google = async (req, res) => {
                 });
             } catch (error) {
                 return res.status(400).send({
-                    error: error.message
+                    message: error.message
                 })
             }
         })
@@ -166,14 +136,19 @@ exports.register = async (req, res) => {
     try {
         try {
             var user = await UserModel.findByEmail(req.body.email);
-            return res.status(400).json({
-                message: 'Email already exists.'
-            });
+            if (user.status)
+                return res.status(400).send({
+                    message: "User is already exist"
+                })
+            await UserModel.remove(user.id)
         } catch (error) { }
         const email = req.body.email;
         const password = req.body.password;
         const username = req.body.username;
         const hashedPassword = await bcryptUtil.createHash(password);
+        const code = bcryptUtil.genCode();
+        const birthday = req.body.birthday
+        await sendCode(email, code);
         // if (Object.keys(req.body).indexOf("avatar") == -1)
         //     req.body.avatar = `${urlConfig.SERVER_URL}api/resource/get/default-avatar.png`;
         const userData = {
@@ -181,21 +156,22 @@ exports.register = async (req, res) => {
             email: email,
             password: hashedPassword,
             role: "customer", // "customer, business, admin"
-            status: true,
+            status: 0,
+            code: code,
             // avatar: req.body.avatar,
-            level: "Beginner"
+            level: "Beginner",
+            birthday: birthday
         }
         await UserModel.create(userData)
         return res.json({
-            message: 'Success Register'
+            message: 'Verify Code'
         });
     }
     catch (error) {
         return res.status(400).send({
-            error: error.message
+            message: error.message
         })
     }
-
 }
 
 exports.facebook = async (req, res) => {
@@ -207,7 +183,7 @@ exports.login = async (req, res) => {
         var user = await UserModel.findByEmail(req.body.email)
         const isMatched = await bcryptUtil.compareHash(req.body.password, user.password);
         // const isMatched = req.body.password == user.password;
-        if (isMatched) {
+        if (isMatched && user.status) {
             const token = await jwtUtil.createToken({ id: user.id, role: user.role });
             return res.json({
                 access_token: token,
@@ -226,14 +202,47 @@ exports.login = async (req, res) => {
     }
     catch (error) {
         return res.status(400).send({
-            error: error.message
+            message: error.message
         })
     }
 }
 
-exports.avatar = async(req, res) => {
+exports.verifyCode = async (req, res) => {
     try {
-        var result = await UserModel.uploadAvatar(req.body) ;
+        var user = await UserModel.findByEmail(req.body.email);
+        if (user.code != req.body.code)
+            throw new Error("Code is wrong")
+        UserModel.makeActive(req.body.email);
+        return res.json({
+            message: "register success"
+        })
+    }
+    catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+exports.resendCode = async (req, res) => {
+    try {
+        var code = bcryptUtil.genCode();
+        await sendCode(req.body.email, code);
+        await UserModel.saveCode(req.body.email, code);
+        return res.json({
+            message: "resend code success"
+        })
+    }
+    catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+exports.avatar = async (req, res) => {
+    try {
+        var result = await UserModel.uploadAvatar(req.body);
         return res.json({
             message: "success",
             data: result
@@ -241,13 +250,13 @@ exports.avatar = async(req, res) => {
     }
     catch (error) {
         return res.status(400).send({
-            error: error.message
+            message: error.message
         })
     }
 }
 
 exports.getAllUsers = async (req, res) => {
-    
+
     try {
         var result = await UserModel.getAll();
         return res.json({
@@ -257,7 +266,36 @@ exports.getAllUsers = async (req, res) => {
     }
     catch (error) {
         return res.status(400).send({
-            error: error.message
+            message: error.message
         })
     }
 }
+
+// if (email.indexOf("@gmail.com") != -1) {
+//     const transporter = nodemailer.createTransport({
+//         service: 'gmail',
+//         host: 'smtp.gmail.com',
+//         port: 465,
+//         // secure: true,
+//         auth: {
+//             user: mailConfig.gmail,
+//             pass: mailConfig.gmail_password
+//         },
+//     });
+//     try {
+//         const mailOptions = {
+//             from: mailConfig.gmail,
+//             to: email,
+//             subject: 'Verification Code From Dac Rapide',
+//             text: `Your Verification Code is: <${code}>`,
+//         };
+
+//         const info = await transporter.sendMail(mailOptions);
+//         resolve({ message: "success", data: code })
+//         return;
+//     } catch (error) {
+//         console.log(error);
+//         reject(error)
+//         return;
+//     }
+// } 
