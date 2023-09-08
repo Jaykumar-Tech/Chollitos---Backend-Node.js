@@ -62,6 +62,10 @@ exports.find = async (req, res) => {
 exports.get = async (req, res) => {
     try {
         var result = await DealModel.get(req.params.id);
+        if (result.vip && ( !req.user || req.user.role != 'vip' ) )
+            return res.status(400).send({
+                message: "Unauthorized"
+            })
         return res.json({
             message: "success",
             data: result
@@ -102,7 +106,7 @@ exports.upload = async (req, res) => {
     }
 }
 
-exports.remove = async ( req, res ) => {
+exports.remove = async (req, res) => {
     try {
         await DealModel.remove(req.params.id);
         return res.json({
