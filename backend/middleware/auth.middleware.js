@@ -38,7 +38,7 @@ module.exports = async (req, res, next) => {
         } else {
             next();
         }
-    } if (req.method == "GET" && req.originalUrl.startsWith("/api/deal/get/")) {
+    } else if (req.method == "GET" && req.originalUrl.startsWith("/api/deal/get/")) {
         try {
             req.user = await getUserFromToken(token);
             next();
