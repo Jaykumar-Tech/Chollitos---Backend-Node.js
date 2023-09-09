@@ -15,7 +15,7 @@ var defaultApp = admin.initializeApp({
 });
 
 const sendCode = async (email, code) => {
-    new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         const transporter = nodemailer.createTransport({
             host: 'smtp-mail.outlook.com',
             port: 587,
@@ -35,10 +35,8 @@ const sendCode = async (email, code) => {
 
             const info = await transporter.sendMail(mailOptions);
             resolve({ message: "success", data: code })
-            return;
         } catch (error) {
             reject(error)
-            return;
         }
     })
 }
