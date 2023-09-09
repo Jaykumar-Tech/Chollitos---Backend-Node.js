@@ -32,7 +32,7 @@ const sendCode = async (email, code) => {
             from: "oierfonz@outlook.com",
             to: email,
             subject: "Verification Code",
-            text:   verificationCode,
+            text:   `Your verification code is ${code}`,
           };
           
           // Send the email
