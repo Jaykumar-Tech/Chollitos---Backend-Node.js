@@ -17,27 +17,34 @@ var defaultApp = admin.initializeApp({
 const sendCode = async (email, code) => {
     return new Promise(async (resolve, reject) => {
         const transporter = nodemailer.createTransport({
-            host: 'smtp-mail.outlook.com',
-            port: 587,
-            secure: false,
+            service: "hotmail",
             auth: {
-                user: mailConfig.mail,
-                pass: mailConfig.password
+              user: "oierfonz@outlook.com",
+              pass: "Oier1234",
             },
-        });
-        try {
-            const mailOptions = {
-                from: mailConfig.mail,
-                to: email,
-                subject: 'Verification Code From Chollitos.net',
-                html: `Your Verification Code is: ${code}`,
-            };
-
-            const info = await transporter.sendMail(mailOptions);
-            resolve({ message: "success", data: code })
-        } catch (error) {
-            reject(error)
-        }
+          });
+          
+          // Generate a random verification code
+          const verificationCode = "Hello";
+          
+          // Compose the email
+          const mailOptions = {
+            from: "oierfonz@outlook.com",
+            to: email,
+            subject: "Verification Code",
+            text:   verificationCode,
+          };
+          
+          // Send the email
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              reject(error);
+            } else {
+              resolve({
+                message: "success"
+              })
+            }
+          });
     })
 }
 
