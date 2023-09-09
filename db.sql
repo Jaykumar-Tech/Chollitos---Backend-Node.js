@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 09/09/2023 14:14:29
+ Date: 09/09/2023 22:09:10
 */
 
 SET NAMES utf8mb4;
@@ -310,7 +310,7 @@ CREATE TABLE `likes`  (
   `dest_id` int(4) NOT NULL,
   `is_like` int(4) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 131 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 132 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of likes
@@ -372,6 +372,7 @@ INSERT INTO `likes` VALUES (127, 2, 'comment', 20, 0);
 INSERT INTO `likes` VALUES (128, 2, 'comment', 15, 0);
 INSERT INTO `likes` VALUES (129, 2, 'comment', 8, 1);
 INSERT INTO `likes` VALUES (130, 4, 'deal', 35, 1);
+INSERT INTO `likes` VALUES (131, 4, 'deal', 72, 1);
 
 -- ----------------------------
 -- Table structure for notification
@@ -503,8 +504,7 @@ CREATE TABLE `user`  (
 INSERT INTO `user` VALUES (1, 'user1', 'daltonchua3@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (2, 'user2', 'daltonchua2@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (3, 'user3', 'daltonchua1@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
-INSERT INTO `user` VALUES (4, 'vip', 'v@v.com', '$2a$10$IejCcbRwK9UYC4iUJmcEteJDmOfV16GIUkKjVX.GEYNHXnTE.a/Ku', NULL, 'vip', NULL, 1, 0, 'Beginner', NULL);
+INSERT INTO `user` VALUES (4, 'vip', 'vip@gmail.com', '$2a$10$IejCcbRwK9UYC4iUJmcEteJDmOfV16GIUkKjVX.GEYNHXnTE.a/Ku', NULL, 'vip', NULL, 1, 0, 'Beginner', NULL);
 INSERT INTO `user` VALUES (5, 'admin', 'admin@gmail.com', '$2a$10$Gn6Uu3NeRnqTbjZQr84rXe6y8mOP3PBx6k0bdjsA/lI.qytkjOhYe', '2003-06-11', 'admin', '2681', 1, 0, 'Beginner', NULL);
-INSERT INTO `user` VALUES (41, 'vip', 'daltonchua@outlook.com', '$2a$10$UhisOPsVoV91.NZx/aBtZerIelbQTaXp3vSHX566Ujhcdp0hvgb.q', '2000-01-11', 'customer', '5391', 0, 0, 'Beginner', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
