@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 08/09/2023 09:59:27
+ Date: 09/09/2023 14:14:29
 */
 
 SET NAMES utf8mb4;
@@ -61,7 +61,7 @@ CREATE TABLE `blog`  (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `html` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 40 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of blog
@@ -96,6 +96,7 @@ INSERT INTO `blog` VALUES (36, '<h1>Hello Everyone</h1> This is my slogan.');
 INSERT INTO `blog` VALUES (37, '<h1>Hello Everyone</h1> This is my slogan.');
 INSERT INTO `blog` VALUES (38, '<h1>Hello Everyone</h1> This is my slogan.');
 INSERT INTO `blog` VALUES (39, '<h1>Hello Everyone</h1> This is my slogan.');
+INSERT INTO `blog` VALUES (40, '<p>AAABBB</p>');
 
 -- ----------------------------
 -- Table structure for category
@@ -162,7 +163,7 @@ CREATE TABLE `comment`  (
   `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `date` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of comment
@@ -204,6 +205,7 @@ INSERT INTO `comment` VALUES (37, 3, 41, 34, 'deal', '2023-09-06 13:06:18');
 INSERT INTO `comment` VALUES (38, 3, 41, 35, 'deal', '2023-09-06 15:02:41');
 INSERT INTO `comment` VALUES (39, 3, 41, 36, 'deal', '2023-09-06 15:03:10');
 INSERT INTO `comment` VALUES (42, 3, 41, 39, 'deal', '2023-09-07 04:21:29');
+INSERT INTO `comment` VALUES (43, 4, 35, 40, 'deal', '2023-09-09 10:43:50');
 
 -- ----------------------------
 -- Table structure for deal
@@ -308,7 +310,7 @@ CREATE TABLE `likes`  (
   `dest_id` int(4) NOT NULL,
   `is_like` int(4) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 130 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 131 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of likes
@@ -369,6 +371,7 @@ INSERT INTO `likes` VALUES (126, 1, 'comment', 7, 0);
 INSERT INTO `likes` VALUES (127, 2, 'comment', 20, 0);
 INSERT INTO `likes` VALUES (128, 2, 'comment', 15, 0);
 INSERT INTO `likes` VALUES (129, 2, 'comment', 8, 1);
+INSERT INTO `likes` VALUES (130, 4, 'deal', 35, 1);
 
 -- ----------------------------
 -- Table structure for notification
@@ -492,16 +495,16 @@ CREATE TABLE `user`  (
   `level` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (1, 'user1', 'daltonchua3@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (2, 'user2', 'daltonchua2@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
-INSERT INTO `user` VALUES (3, 'user3', 'daltonchua@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
+INSERT INTO `user` VALUES (3, 'user3', 'daltonchua1@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (4, 'vip', 'v@v.com', '$2a$10$IejCcbRwK9UYC4iUJmcEteJDmOfV16GIUkKjVX.GEYNHXnTE.a/Ku', NULL, 'vip', NULL, 1, 0, 'Beginner', NULL);
-INSERT INTO `user` VALUES (31, 'vip', 'tomsolon@outlook.com', '$2a$10$OwXRk17u.teoxt17uGeI0e.WKqaOAtFfCcAYhVJ4rZ1B8YxeNPVme', NULL, 'customer', '4793', 0, 0, 'Beginner', NULL);
-INSERT INTO `user` VALUES (36, 'vip', 'joneyato@outlook.com', '$2a$10$mcfvdFi1KcqPt32KDZE8QuqvROjSQzfCT1Jm7voAjyzwJWJfYfHPO', '2000-01-11', 'customer', '6982', 1, 0, 'Beginner', NULL);
+INSERT INTO `user` VALUES (5, 'admin', 'admin@gmail.com', '$2a$10$Gn6Uu3NeRnqTbjZQr84rXe6y8mOP3PBx6k0bdjsA/lI.qytkjOhYe', '2003-06-11', 'admin', '2681', 1, 0, 'Beginner', NULL);
+INSERT INTO `user` VALUES (41, 'vip', 'daltonchua@outlook.com', '$2a$10$UhisOPsVoV91.NZx/aBtZerIelbQTaXp3vSHX566Ujhcdp0hvgb.q', '2000-01-11', 'customer', '5391', 0, 0, 'Beginner', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
