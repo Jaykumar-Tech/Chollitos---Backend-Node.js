@@ -138,7 +138,7 @@ exports.register = async (req, res) => {
                 return res.status(400).send({
                     message: "User is already exist"
                 })
-            await UserModel.remove(user.id)
+            await UserModel.removeByEmail(user.email) 
         } catch (error) { }
         const email = req.body.email;
         const password = req.body.password;
