@@ -16,7 +16,7 @@ const getUserFromToken = async (token) => {
     }
 }
 
-module.exports = async (req, res, next) => {
+const AuthGuard = async (req, res, next) => {
     console.log(req.method, req.originalUrl);
     let token = req.headers.authorization;
     if (token && token.startsWith('Bearer ')) {
@@ -60,4 +60,31 @@ module.exports = async (req, res, next) => {
             return res.status(400).json({ message: 'Authorization header is missing.' })
         }
     }
+}
+
+const AdminGuard = async (req, res, next) => {
+    let token = req.headers.authorization;
+    if (token && token.startsWith('Bearer ')) {
+        token = token.slice(7, token.length);
+    }
+    if (token) {
+        try {
+            req.user = await getUserFromToken(token);
+            if (req.method == "POST")
+                req.body.user_id = req.user.id;
+            if ( req.user.role != "admin")
+            return res.status(401).json({ message: 'You are not admin' });
+            req.token = token;
+            next();
+        } catch (error) {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+    } else {
+        return res.status(400).json({ message: 'Authorization header is missing.' })
+    }
+}
+
+module.exports = {
+    AdminGuard,
+    AuthGuard
 }

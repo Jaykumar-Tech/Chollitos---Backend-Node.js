@@ -3,7 +3,7 @@ const router = express.Router();
 
 const StoreController = require('../controllers/store.controller');
 const ErrorHandler = require('../middleware/error.middleware');
-const Authguard = require("../middleware/auth.middleware") ;
+const {AuthGuard} = require("../middleware/auth.middleware") ;
 // const schema = require('../validations/follow.validation');
 // const validate = require('../utils/validator.util'); 
 

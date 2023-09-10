@@ -8,7 +8,7 @@ const Exist = require("../middleware/existance.middleware")
 const schema = require('../validations/deal.validation');
 const validate = require('../utils/validator.util');
 const {dealFilter, dealCreate} = require("../middleware/deal.middleware");
-const AuthGuard = require('../middleware/auth.middleware'); 
+const {AuthGuard} = require('../middleware/auth.middleware'); 
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
