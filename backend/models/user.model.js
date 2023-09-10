@@ -216,4 +216,21 @@ User.makeActive = (email) => {
             })
     })
 }
+
+User.resetPassword = ( email, password ) => {
+    return new Promise((resolve, reject) => {
+        client.query("UPDATE user set password=? WHERE email=?",
+        [password, email],
+        (err, row) => {
+            if ( err ) {
+                reject(err) ;
+                return ;
+            } else {
+                resolve(row)
+                return
+            }
+        })
+    })
+}
+
 module.exports = User;

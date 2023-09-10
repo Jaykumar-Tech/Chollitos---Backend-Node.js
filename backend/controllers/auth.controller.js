@@ -294,6 +294,22 @@ exports.remove = async ( req, res ) => {
     }
 }
 
+exports.resetPassword = async ( req, res ) => {
+    try {
+        var email = req.body.email 
+        var password = req.body.password
+        var hashedPassword = await bcryptUtil.createHash(password)
+        await UserModel.resetPassword(email, hashedPassword) 
+        return res.json({
+            message: "reset success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
 // if (email.indexOf("@gmail.com") != -1) {
 //     const transporter = nodemailer.createTransport({
 //         service: 'gmail',
