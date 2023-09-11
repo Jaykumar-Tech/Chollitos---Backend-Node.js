@@ -125,7 +125,7 @@ const load = async (filepath, user_id) => {
     const workbook = XLSX.readFile(filepath);
     const worksheet = workbook.Sheets['Sheet1']; // Replace 'Sheet1' with the actual sheet name
     const deals = XLSX.utils.sheet_to_json(worksheet);
-    throw new Error(JSON.stringify(deals))
+    throw new Error(typeof deal.price_old) ;
     for (deal of deals) {
         var store_id;
         try {
