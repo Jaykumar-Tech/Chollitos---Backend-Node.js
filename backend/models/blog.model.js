@@ -13,7 +13,7 @@ Blog.create = (html) => {
                 reject(err);
                 return;
             }
-            resolve(row);
+            resolve(row.insertId);
         });
     })
 };

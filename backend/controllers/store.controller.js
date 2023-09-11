@@ -1,7 +1,11 @@
 StoreModel = require("../models/store.model");
+BlogModel = require("../models/blog.model");
 
 exports.create = async (req, res) => {
     try {
+        var blog_id = await BlogModel.create(req.body.blog);
+        delete req.body.blog
+        req.body.info_html = blog_id;
         var result = await StoreModel.create(req.body);
         return res.json({
             message: "success",

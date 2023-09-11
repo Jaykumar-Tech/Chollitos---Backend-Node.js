@@ -24,8 +24,7 @@ exports.dealCreate = async (req, res, next) => {
     }
     if (req.body.hasOwnProperty("start_date")) {
         delete req.body.start_date;
-        req.body.start_date = moment(new Date(new Date().toUTCString())).format("YYYY-MM-DD HH:mm:ss") ;
     }
-
+    req.body.start_date = moment(new Date(new Date().toUTCString())).format("YYYY-MM-DD HH:mm:ss") ;
     next();
 }

@@ -103,7 +103,11 @@ exports.login = async (req, res) => {
             });
         } else if ( !user.status ) {
             return res.status(400).json({
-                message: "Your account is not available!"
+                message: "Your account is not activated!"
+            })
+        } else if ( user.status == -1 ) {
+            return res.status(400).json({
+                message: "Your account is closed!"
             })
         } else {
             return res.status(400).json({

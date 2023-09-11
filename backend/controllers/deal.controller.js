@@ -5,6 +5,9 @@ const moment = require('moment')
 
 exports.create = async (req, res) => {
     try {
+        req.body.price_new = parseFloat(req.body.price_low.replace(",","."))
+        req.body.price_low = parseFloat(req.body.price_low.replace(",","."))
+        req.body.price_old = parseFloat(req.body.price_low.replace(",","."))
         var result = await DealModel.create(req.body);
         return res.json({
             message: "success",
@@ -136,8 +139,8 @@ const load = async (filepath, user_id) => {
             title: deal.title,
             description: deal.description,
             store_id: store_id,
-            price_new: deal.price_old,
-            price_low: deal.price_new,
+            price_new: parseFloat(deal.price_old.replace(",",".")),
+            price_low: parseFloat(deal.price_new.replace(",",".")),
             image_urls: JSON.stringify([deal.image_url]),
             deal_url: deal.deal_url,
             category_id: -1,
