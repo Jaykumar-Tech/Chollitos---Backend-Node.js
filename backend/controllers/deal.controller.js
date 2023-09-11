@@ -5,8 +5,10 @@ const moment = require('moment')
 
 exports.create = async (req, res) => {
     try {
-        req.body.price_new = parseFloat(req.body.price_new.replace(",", "."))
-        req.body.price_low = parseFloat(req.body.price_low.replace(",", "."))
+        if (typeof req.body.price_new == "string")
+            req.body.price_new = parseFloat(req.body.price_new.replace(",", "."))
+        if (typeof req.body.price_low == "string")
+            req.body.price_low = parseFloat(req.body.price_low.replace(",", "."))
         var result = await DealModel.create(req.body);
         return res.json({
             message: "success",
