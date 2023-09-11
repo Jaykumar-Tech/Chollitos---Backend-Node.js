@@ -5,8 +5,8 @@ const moment = require('moment')
 
 exports.create = async (req, res) => {
     try {
-        req.body.price_new = parseFloat(req.body.price_new.replace(",","."))
-        req.body.price_low = parseFloat(req.body.price_low.replace(",","."))
+        req.body.price_new = parseFloat(req.body.price_new.replace(",", "."))
+        req.body.price_low = parseFloat(req.body.price_low.replace(",", "."))
         var result = await DealModel.create(req.body);
         return res.json({
             message: "success",
@@ -64,7 +64,7 @@ exports.find = async (req, res) => {
 exports.get = async (req, res) => {
     try {
         var result = await DealModel.get(req.params.id);
-        if (result.vip && ( !req.user || req.user.role != 'vip' ) )
+        if (result.vip && (!req.user || req.user.role != 'vip'))
             return res.status(400).send({
                 message: "Unauthorized"
             })
@@ -134,13 +134,16 @@ const load = async (filepath, user_id) => {
             var result = await StoreModel.create({ name: deal.store });
             store_id = result.insertId;
         }
-        throw new Error(deal.price_old.replace(",",".") + deal.price_new.replace(",","."))
+        if (deal.price_old)
+            deal.price_old = parseFloat(deal.price_old.replace(",", "."));
+        if (deal.price_new)
+            deal.price_new = parseFloat(deal.price_new.replace(",", "."));
         DealModel.create({
             title: deal.title,
             description: deal.description,
             store_id: store_id,
-            price_new: parseFloat(deal.price_old.replace(",",".")),
-            price_low: parseFloat(deal.price_new.replace(",",".")),
+            price_new: deal.price_old,
+            price_low: deal.price_new,
             image_urls: JSON.stringify([deal.image_url]),
             deal_url: deal.deal_url,
             category_id: -1,
