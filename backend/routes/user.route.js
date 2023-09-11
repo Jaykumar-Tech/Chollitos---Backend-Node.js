@@ -3,26 +3,25 @@ const router = express.Router();
 
 const AuthController = require('../controllers/auth.controller');
 const ErrorHandler = require('../middleware/error.middleware');
-const {AuthGuard} = require('../middleware/auth.middleware'); // token check
+const { AuthGuard, AdminGuard } = require('../middleware/auth.middleware'); // token check
 const schema = require('../validations/auth.validation');
-const validate = require('../utils/validator.util'); 
+const validate = require('../utils/validator.util');
 
 // Register
-router.post('/exist',                                          ErrorHandler(AuthController.exist)); // exist email
-router.post('/google',                                          ErrorHandler(AuthController.google)); // sign with google
-router.post('/facebook',                                          ErrorHandler(AuthController.facebook)); // sign with google
-router.get('/callback',                                          ErrorHandler(AuthController.authCallback)); // get callback
-router.post('/resend_code',                                          ErrorHandler(AuthController.resendCode)); // get callback
-router.post('/register',                                        ErrorHandler(AuthController.register)); // register with email and password
-router.post('/verify_code',                                        ErrorHandler(AuthController.verifyCode)); // register with email and password
-router.get('/delete/:id',                                        ErrorHandler(AuthController.remove)); // register with email and password
-router.post('/reset_password',                                          ErrorHandler(AuthController.resetPassword)); // get callback
+router.post('/resend_code', ErrorHandler(AuthController.resendCode)); // get callback
+router.post('/verify_code', ErrorHandler(AuthController.verifyCode)); // register with email and password
+router.post('/reset_password', ErrorHandler(AuthController.resetPassword));
+router.post('/update_role', AdminGuard, validate(schema.updateRole), ErrorHandler(AuthController.updateRole));
+router.get('/delete/:id', AdminGuard, ErrorHandler(AuthController.delete));
+router.get('/deactivate/:id', AdminGuard, ErrorHandler(AuthController.deactivate));
+router.get('/activate/:id', AdminGuard, ErrorHandler(AuthController.activate));
 
 // Login
-router.post('/login',                                          ErrorHandler(AuthController.login)); // exist email
+router.post('/login', ErrorHandler(AuthController.login)); // exist email
+router.post('/register', ErrorHandler(AuthController.register)); // register with email and password
 
 // Get All user's information
-router.get('/getall',                                           ErrorHandler(AuthController.getAllUsers));
+router.get('/getall', AdminGuard, ErrorHandler(AuthController.getAllUsers));
 
 // router.post('/login',    validate(schema.login),                ErrorHandler(AuthController.login));
 // router.get('/user',                                             ErrorHandler(AuthController.getUser));
@@ -39,6 +38,6 @@ router.get('/getall',                                           ErrorHandler(Aut
 // router.post('/forgot',   validate(schema.resend),       ErrorHandler(AuthController.resendCode));
 // router.post('/resetpassword',   validate(schema.resetpassword),       ErrorHandler(AuthController.resetPassword));
 
-router.all('*',  (req, res) => res.status(400).json({ message: 'Bad Request.'}))
+router.all('*', (req, res) => res.status(400).json({ message: 'Bad Request.' }))
 
 module.exports = router;

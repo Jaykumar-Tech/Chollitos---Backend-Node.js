@@ -70,10 +70,8 @@ const AdminGuard = async (req, res, next) => {
     if (token) {
         try {
             req.user = await getUserFromToken(token);
-            if (req.method == "POST")
-                req.body.user_id = req.user.id;
-            if ( req.user.role != "admin")
-            return res.status(401).json({ message: 'You are not admin' });
+            if (req.user.role != "admin")
+                return res.status(401).json({ message: 'You are not admin' });
             req.token = token;
             next();
         } catch (error) {

@@ -24,7 +24,7 @@ User.create = (newUser) => {
 };
 User.findById = (id) => {
     return new Promise((resolve, reject) => {
-        client.query(`SELECT * FROM user WHERE id = ${id}`, (err, res) => {
+        client.query(`SELECT * FROM user WHERE id = ${id} and status!=-1`, (err, res) => {
             if (err) {
                 reject(err);
                 return;
@@ -53,7 +53,7 @@ User.findByEmail = (email) => {
 };
 User.getAll = () => {
     return new Promise((resolve, reject) => {
-        let query = "SELECT * FROM user";
+        let query = "SELECT * FROM user WHERE status!= -1";
         client.query(query, (err, res) => {
             if (err) {
                 reject(err);
@@ -64,11 +64,11 @@ User.getAll = () => {
         });
     })
 };
-User.updateById = (id, user) => {
+User.updateRole = (id, role) => {
     return new Promise((resolve, reject) => {
         client.query(
-            "UPDATE user SET firstname = ?, lastname = ?, password = ?, email = ?, role = ?, status = ? WHERE id = ?",
-            [user.firstname, user.lastname, user.password, user.email, user.role, user.status, id],
+            "UPDATE user SET role = ? WHERE id = ?",
+            [role, id],
             (err, res) => {
                 if (err) {
                     reject(err);
@@ -77,15 +77,16 @@ User.updateById = (id, user) => {
                     reject({ message: "not_found" });
                     return;
                 } else {
-                    resolve({ id: id, ...user });
+                    resolve("success")
                 }
             }
         );
     })
 };
-User.remove = (id) => {
+User.changeStatusById = (id, status) => {
     return new Promise((resolve, reject) => {
-        client.query("UPDATE user SET status = 0 WHERE id = ?", id, (err, res) => {
+        client.query("UPDATE user SET status = ? WHERE id = ?", 
+        [status, id], (err, res) => {
             if (err) {
                 reject(err);
                 return;
@@ -98,9 +99,11 @@ User.remove = (id) => {
         });
     })
 };
-User.removeByEmail = (email) => {
+User.changeStatusByEmail = (email, status) => {
     return new Promise((resolve, reject) => {
-        client.query("DELETE FROM user WHERE email = ?", email, (err, res) => {
+        client.query("UPDATE user set status=? WHERE email = ?",
+        [status, email], 
+        (err, res) => {
             if (err) {
                 reject(err);
                 return;
@@ -113,9 +116,11 @@ User.removeByEmail = (email) => {
         });
     })
 };
-User.removeAll = () => {
+User.deleteByEmail = (email) => {
     return new Promise((resolve, reject) => {
-        client.query("DELETE FROM user", (err, res) => {
+        client.query("DELETE FROM user WHERE email = ?",
+        [email], 
+        (err, res) => {
             if (err) {
                 reject(err);
                 return;
@@ -175,48 +180,6 @@ User.resetPassword = (email, password, result) => {
             })
     })
 }
-User.uploadAvatar = (data) => {
-    return new Promise((resolve, reject)=> {
-        client.query("UPDATE user set avatar=? WHERE id=?",
-        [data.avatar, data.user_id],
-        (err, rows)=>{
-            if (err) {
-                reject(err);
-                return;
-            } else if (res.affectedRows == 0) {
-                reject({ message: "User Not Found" });
-                return;
-            } else {
-                resolve(rows);
-            }
-        })
-    })
-}
-User.logoutUser = (token, exp) => {
-    return new Promise((resolve, reject) => {
-        const now = new Date();
-        const expire = new Date(exp * 1000);
-        const milliseconds = expire.getTime() - now.getTime();
-        /* ----------------------------- BlackList Token ---------------------------- */
-        cacheUtil.set(token, token, milliseconds);
-        resolve();
-    })
-}
-User.makeActive = (email) => {
-    return new Promise((resolve, reject) => {
-        client.query("UPDATE user SET status=1 WHERE email=?",
-            [email], (err, row) => {
-                if (err) {
-                    reject(err);
-                    return;
-                } else {
-                    resolve(row)
-                    return;
-                }
-            })
-    })
-}
-
 User.resetPassword = ( email, password ) => {
     return new Promise((resolve, reject) => {
         client.query("UPDATE user set password=? WHERE email=?",

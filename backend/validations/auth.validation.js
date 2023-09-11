@@ -8,8 +8,8 @@ const validatePassword = (value) => {
 }
 
 const validateRole = (value) => {
-    if (value !== "customer" && value != "business") {
-        throw new Error('Your role must be [customer, business]')
+    if (value !== "customer" && value != "vip" && value != "admin") {
+        throw new Error('Your role must be [customer, vip, admin]')
     }
 }
 
@@ -56,35 +56,8 @@ module.exports = {
         email: Joi.string().email().required(),
         password: Joi.string().required()
     }),
-    verify: Joi.object().keys({
-        email: Joi.string().email().required(),
-        code: Joi.string().required().external(validateCode)
-    }),
-    resend: Joi.object().keys({
-        email: Joi.string().email().required()
-    }),
-    edit: Joi.object().keys({
-        firstname: Joi.string().required(),
-        lastname: Joi.string().required(),
-        email: Joi.string().email().required(),
-        oldPassword: Joi.string().required().min(8).max(16).external(validatePassword),
-        newPassword: Joi.string().required().min(8).max(16).external(validatePassword)
-    }),
-    addreview: Joi.object().keys({
-        email: Joi.string().email().required(),
-        star: Joi.number().required().external(validateStar)
-    }),
-    incbalance: Joi.object().keys({
-        email: Joi.string().email().required(),
-        balance: Joi.number().required().external(validateBalance)
-    }),
-    decbalance: Joi.object().keys({
-        email: Joi.string().email().required(),
-        balance: Joi.number().required().external(validateBalance)
-    }),
-    resetpassword: Joi.object().keys({
-        email: Joi.string().email().required(),
-        code: Joi.string().required().external(validateCode),
-        password: Joi.string().required().min(8).max(16).external(validatePassword),
-    }),
+    updateRole: Joi.object().keys({
+        user_id: Joi.number().required(),
+        role: Joi.string().required().external(validateRole)
+    })
 }
