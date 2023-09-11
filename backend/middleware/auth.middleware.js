@@ -27,7 +27,7 @@ const AuthGuard = async (req, res, next) => {
             if (token) {
                 try {
                     req.user = await getUserFromToken(token);
-                    if (req.user.role != "vip") res.status(401).json({ message: 'Unauthorized' });
+                    if (req.user.role != "customer" && req.user.role !='admin') res.status(401).json({ message: 'Unauthorized' });
                     else next();
                 } catch (error) {
                     return res.status(401).json({ message: 'Unauthorized' });
