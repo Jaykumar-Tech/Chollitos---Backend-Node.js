@@ -134,9 +134,9 @@ const load = async (filepath, user_id) => {
             var result = await StoreModel.create({ name: deal.store });
             store_id = result.insertId;
         }
-        if (deal.price_old)
+        if (typeof deal.price_old == "string")
             deal.price_old = parseFloat(deal.price_old.replace(",", "."));
-        if (deal.price_new)
+        if (typeof deal.price_new == "string")
             deal.price_new = parseFloat(deal.price_new.replace(",", "."));
         DealModel.create({
             title: deal.title,
