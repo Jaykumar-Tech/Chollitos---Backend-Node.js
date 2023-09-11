@@ -125,7 +125,6 @@ const load = async (filepath, user_id) => {
     const workbook = XLSX.readFile(filepath);
     const worksheet = workbook.Sheets['Sheet1']; // Replace 'Sheet1' with the actual sheet name
     const deals = XLSX.utils.sheet_to_json(worksheet);
-    throw new Error(typeof deals[0].price_old) ;
     for (deal of deals) {
         var store_id;
         try {
@@ -135,6 +134,7 @@ const load = async (filepath, user_id) => {
             var result = await StoreModel.create({ name: deal.store });
             store_id = result.insertId;
         }
+        throw new Error(deal.price_old.replace(",",".") + deal.price_new.replace(",","."))
         DealModel.create({
             title: deal.title,
             description: deal.description,
