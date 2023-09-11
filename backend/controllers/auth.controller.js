@@ -46,7 +46,7 @@ exports.register = async (req, res) => {
     try {
         try {
             var user = await UserModel.findByEmail(req.body.email);
-            if (user.status)
+            if (user.status == 1)
                 return res.status(400).send({
                     message: "User is already exist"
                 })
