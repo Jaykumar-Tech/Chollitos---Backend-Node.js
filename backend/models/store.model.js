@@ -48,6 +48,9 @@ Store.get = (id) => {
         WHERE type!="deal"
         GROUP BY store_id) S
         ON S.store_id=store.id 
+        LEFT JOIN
+        blog
+        ON blog.id = store.info_html
         WHERE store.id=?`, [id], (err, rows) => {
             if (err) {
                 reject(err);
