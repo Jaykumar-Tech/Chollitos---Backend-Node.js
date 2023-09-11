@@ -22,6 +22,7 @@ const AuthGuard = async (req, res, next) => {
     if (token && token.startsWith('Bearer ')) {
         token = token.slice(7, token.length);
     }
+    console.log(req.body)
     if (req.method == "POST" && req.originalUrl == "/api/deal/find") {
         if (req.body.vip && req.body.vip > 0) {
             if (token) {
