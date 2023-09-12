@@ -7,6 +7,7 @@ const ErrorHandler = require('../middleware/error.middleware');
 // const validate = require('../utils/validator.util'); 
 
 router.post('/add',             ErrorHandler(CategoryController.create));
+router.post('/edit',             ErrorHandler(CategoryController.edit));
 router.get('/children/:id',             ErrorHandler(CategoryController.getChildren));
 router.get('/getall',           ErrorHandler(CategoryController.getAll));
 router.get('/getbyslug/:slug_id',           ErrorHandler(CategoryController.getBySlug));

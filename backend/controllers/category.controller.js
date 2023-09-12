@@ -75,7 +75,7 @@ exports.deactivate = async ( req, res ) => {
     try {
         await CategoryModel.changeStatus(req.params.id, 0);
         return res.json({
-            message: "category deletion success"
+            message: "Deactivating category success"
         })
     } catch (error) {
         return res.status(400).send({
@@ -88,7 +88,20 @@ exports.activate = async ( req, res ) => {
     try {
         await CategoryModel.changeStatus(req.params.id, 1);
         return res.json({
-            message: "category deletion success"
+            message: "Activating category success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+exports.edit = async ( req, res ) => {
+    try {
+        await CategoryModel.update(req.body);
+        return res.json({
+            message: "Updating category success"
         })
     } catch (error) {
         return res.status(400).send({

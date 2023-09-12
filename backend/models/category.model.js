@@ -104,4 +104,23 @@ Category.changeStatus = (id, status) => {
         });
     })
 };
+
+Category.update = (data) => {
+    return new Promise((resolve, reject) => {
+        client.query("UPDATE category SET status = ? WHERE id = ?", 
+        [data, data.id],
+         (err, res) => {
+            if (err) {
+                reject(err);
+                return;
+            } else if (res.affectedRows == 0) {
+                reject({ message: "Update Failed" });
+                return;
+            } else {
+                resolve(res);
+            }
+        });
+    })
+};
+
 module.exports = Category;
