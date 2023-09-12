@@ -98,7 +98,8 @@ exports.login = async (req, res) => {
                 user: {
                     name: user.username,
                     role: user.role,
-                    avatar: user.avatar
+                    avatar: user.avatar,
+                    email: user.email
                 }
             });
         } else if ( !user.status ) {
