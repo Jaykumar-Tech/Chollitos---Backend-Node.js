@@ -13,7 +13,7 @@ Lang.get = () => {
                     return;
                 }
                 if (rows.length > 0) {
-                    resolve({message: "Already Exist"});
+                    resolve(rows[0].name);
                     return;
                 }
                 reject({
@@ -40,4 +40,4 @@ Lang.change = (lang) => {
     });
 };
 
-module.exports = Like;
+module.exports = Lang;

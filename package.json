@@ -16,7 +16,8 @@
     "test": "cd backend/dist && npm start",
     "startnew": "pm2 start ./backend/bin/www",
     "restart": "pm2 stop www && npm run pull && npm run startnew",
-    "temp": "git add . && git commit -am \"temp\""
+    "temp": "git add . && git commit -am \"temp\"",
+    "temp_push": "npm run temp && npm run push"
   },
   "repository": {
     "type": "git",

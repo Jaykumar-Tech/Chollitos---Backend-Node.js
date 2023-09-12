@@ -17,7 +17,7 @@ exports.get = async (req, res) => {
 
 exports.change = async (req, res) => {
     try {
-        var result = await LikeModel.change(req.body.lang) 
+        var result = await LangModel.change(req.body.lang) 
         return res.json({
             message: "success",
             data: result
