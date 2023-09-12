@@ -56,6 +56,20 @@ exports.getBySlug = async (req, res) => {
     }
 }
 
+exports.getById = async (req, res) => {
+    try {
+        var result = await CategoryModel.get(req.params.id) ;
+        return res.json({
+            message: "success",
+            data: result
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
 exports.remove = async ( req, res ) => {
     try {
         await CategoryModel.remove(req.params.id);
