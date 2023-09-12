@@ -133,4 +133,22 @@ Store.remove = (id) => {
     })
 };
 
+Store.changeStatus = (id, status) => {
+    return new Promise((resolve, reject) => {
+        client.query("UPDATE store SET status = ? WHERE id = ?", 
+        [status, id], 
+        (err, res) => {
+            if (err) {
+                reject(err);
+                return;
+            } else if (res.affectedRows == 0) {
+                reject({ message: "Store not found" });
+                return;
+            } else {
+                resolve(res);
+            }
+        });
+    })
+};
+
 module.exports = Store;

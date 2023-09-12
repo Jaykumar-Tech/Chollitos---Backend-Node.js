@@ -106,6 +106,7 @@ Category.changeStatus = (id, status) => {
 };
 
 Category.update = (data) => {
+    console.log(data)
     return new Promise((resolve, reject) => {
         client.query("UPDATE category SET ? WHERE id = ?", 
         [data, data.id],

@@ -6,6 +6,7 @@ exports.create = async (req, res) => {
         var blog_id = await BlogModel.create(req.body.blog);
         delete req.body.blog
         req.body.info_html = blog_id;
+        req.body.status = 1 
         var result = await StoreModel.create(req.body);
         return res.json({
             message: "success",
@@ -20,7 +21,11 @@ exports.create = async (req, res) => {
 
 exports.edit = async (req, res) => {
     try {
-        var result = await StoreModel.edit(req.body.id, req.body);
+        var store = await StoreModel.get(req.body.id)
+        await BlogModel.edit(store.info_html, req.body.blog)
+        req.body.info_html = store.info_html
+        delete req.body.blog
+        var result = await StoreModel.edit(req.body.id, req.body)
         return res.json({
             message: "success",
             data: result
@@ -74,11 +79,24 @@ exports.getByName = async (req, res) => {
     }
 }
 
-exports.remove = async ( req, res ) => {
+exports.activate = async ( req, res ) => {
     try {
-        await StoreModel.remove(req.params.id);
+        await StoreModel.changeStatus(req.params.id, 1)
         return res.json({
-            message: "store deletion success"
+            message: "Activating store success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+exports.deactivate = async ( req, res ) => {
+    try {
+        await StoreModel.changeStatus(req.params.id, 0)
+        return res.json({
+            message: "Deactivating store success"
         })
     } catch (error) {
         return res.status(400).send({
