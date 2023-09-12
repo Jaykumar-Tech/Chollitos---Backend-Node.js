@@ -166,7 +166,7 @@ User.verifyCode = (email, code) => {
         });
     })
 }
-User.resetPassword = (email, password, result) => {
+User.resetPassword = (email, password) => {
     return new Promise((resolve, reject) => {
         client.query("UPDATE user SET password=? WHERE email=?",
             [password, email], (err, row) => {
@@ -178,21 +178,6 @@ User.resetPassword = (email, password, result) => {
                     return;
                 }
             })
-    })
-}
-User.resetPassword = ( email, password ) => {
-    return new Promise((resolve, reject) => {
-        client.query("UPDATE user set password=? WHERE email=?",
-        [password, email],
-        (err, row) => {
-            if ( err ) {
-                reject(err) ;
-                return ;
-            } else {
-                resolve(row)
-                return
-            }
-        })
     })
 }
 

@@ -171,6 +171,27 @@ exports.resetPassword = async ( req, res ) => {
     }
 }
 
+exports.changePassword = async ( req, res ) => {
+    try {
+        var email = req.body.email 
+        var user = await UserModel.findByEmail(email) ;
+        var oldPassword = req.body.old_password 
+        var newPassword = req.body.new_password
+        const isMatched = await bcryptUtil.compareHash(oldPassword, user.password);
+        if ( !isMatched ) 
+            throw new Error("Your current password is not correct")
+        var hashedPassword = await bcryptUtil.createHash(newPassword)
+        await UserModel.resetPassword(email, hashedPassword) 
+        return res.json({
+            message: "Changing password success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
 exports.getAllUsers = async (req, res) => {
     try {
         var result = await UserModel.getAll();

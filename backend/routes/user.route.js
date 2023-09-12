@@ -11,6 +11,7 @@ const validate = require('../utils/validator.util');
 router.post('/resend_code', ErrorHandler(AuthController.resendCode)); // get callback
 router.post('/verify_code', ErrorHandler(AuthController.verifyCode)); // register with email and password
 router.post('/reset_password', ErrorHandler(AuthController.resetPassword));
+router.post('/change_password', ErrorHandler(AuthController.changePassword));
 router.post('/update_role', AdminGuard, validate(schema.updateRole), ErrorHandler(AuthController.updateRole));
 router.get('/delete/:id', AdminGuard, ErrorHandler(AuthController.delete));
 router.get('/deactivate/:id', AdminGuard, ErrorHandler(AuthController.deactivate));
