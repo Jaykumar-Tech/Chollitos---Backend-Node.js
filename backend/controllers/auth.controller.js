@@ -13,8 +13,8 @@ const sendCode = async (email, code) => {
         const transporter = nodemailer.createTransport({
             service: "hotmail",
             auth: {
-              user: "chollitos@outlook.com",
-              pass: "Chollo123",
+              user: "montakesau@outlook.com",
+              pass: "Montake123",
             },
           });
           
@@ -23,7 +23,7 @@ const sendCode = async (email, code) => {
           
           // Compose the email
           const mailOptions = {
-            from: "chollitos@outlook.com",
+            from: "montakesau@outlook.com",
             to: email,
             subject: "Verification Code",
             text:   `Your verification code is ${code}`,
