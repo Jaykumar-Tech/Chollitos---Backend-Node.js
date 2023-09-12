@@ -49,6 +49,11 @@ module.exports = async (req, res, next) => {
                 else if (req.body.type == "discussion" && req.body.dest_id != -1) 
                     throw new Error("The comment of discussion requires dest_id as -1")
             }
+            if ( keys.indexOf("parent_id") >= 0 ) {
+                if ( req.body.parent_id != -1 ) {
+                    await CategoryModel.get(req.body.parent_id)
+                }
+            }
             next();
         } catch (error) {
             return res.status(400).send({

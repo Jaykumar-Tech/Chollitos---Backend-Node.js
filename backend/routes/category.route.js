@@ -11,7 +11,8 @@ router.get('/children/:id',             ErrorHandler(CategoryController.getChild
 router.get('/getall',           ErrorHandler(CategoryController.getAll));
 router.get('/getbyslug/:slug_id',           ErrorHandler(CategoryController.getBySlug));
 router.get('/getbyid/:id',           ErrorHandler(CategoryController.getById));
-router.get('/delete/:id',           ErrorHandler(CategoryController.remove));
+router.get('/activate/:id',           ErrorHandler(CategoryController.activate));
+router.get('/deactivate/:id',           ErrorHandler(CategoryController.deactivate));
 
 router.all('*',  (req, res) => res.status(400).json({ message: 'Bad Request.'}))
 
