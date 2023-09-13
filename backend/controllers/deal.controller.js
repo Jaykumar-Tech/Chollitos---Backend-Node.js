@@ -208,7 +208,7 @@ exports.setVip = async ( req, res ) => {
 
 exports.getAll = async ( req, res ) => {
     try {
-        var result = await DealModel.getAll()
+        var result = await DealModel.getAll(req.user.id, req.user.role)
         return res.json({
             message: "success",
             data: result

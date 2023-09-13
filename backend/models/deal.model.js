@@ -312,13 +312,18 @@ Deal.setVipStatus = (id, status) => {
     })
 }
 
-Deal.getAll = () => {
+Deal.getAll = (userId, role) => {
+    var filter = "1=1" ;
+    if ( role != 'admin' ) {
+        filter = `deal.user_id=${userId}`
+    }
     return new Promise((resolve, reject) => {
         client.query(`SELECT deal.*, user.username as username
          FROM deal
          LEFT JOIN
          user
-         ON user.id = deal.user_id`
+         ON user.id = deal.user_id
+         WHERE ${filter}`
          , (err, rows) => {
                 if (err) {
                     reject(err);
