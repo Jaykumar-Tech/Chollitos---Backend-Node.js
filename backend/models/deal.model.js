@@ -312,4 +312,24 @@ Deal.setVipStatus = (id, status) => {
     })
 }
 
+Deal.getAll = () => {
+    return new Promise((resolve, reject) => {
+        client.query("SELECT * FROM deal",
+            (err, rows) => {
+                if (err) {
+                    reject(err);
+                    return;
+                } else if ( rows.length == 0 ) {
+                    reject({
+                        message: "Deal not found"
+                    })
+                }
+                else {
+                    resolve(rows)
+                    return;
+                }
+            })
+    })
+}
+
 module.exports = Deal;
