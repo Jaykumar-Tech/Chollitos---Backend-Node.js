@@ -67,7 +67,7 @@ exports.find = async (req, res) => {
 exports.get = async (req, res) => {
     try {
         var result = await DealModel.get(req.params.id);
-        if (result.vip && (!req.user || req.user.role != 'vip'))
+        if (result.vip && (!req.user || req.user.role == 'customer'))
             return res.status(400).send({
                 message: "Unauthorized"
             })
