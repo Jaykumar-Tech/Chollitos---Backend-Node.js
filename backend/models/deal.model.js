@@ -25,7 +25,7 @@ Deal.edit = (data) => {
                     reject(err);
                     return;
                 }
-                if (rows.changedRows < 1) {
+                if (rows.affectedRows < 1) {
                     reject({ message: "Not updated" })
                     return;
                 }
