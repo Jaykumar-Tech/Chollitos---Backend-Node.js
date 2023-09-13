@@ -32,8 +32,8 @@ router.get('/usecode/:id', ErrorHandler(DealController.useCode));
 router.get('/delete/:id',      AdminGuard,           ErrorHandler(DealController.delete)); // register with email and password
 router.get('/activate/:id',     AdminGuard,            ErrorHandler(DealController.activate)); // register with email and password
 router.get('/deactivate/:id',   AdminGuard,              ErrorHandler(DealController.deactivate)); // register with email and password
-router.get('/set_vip/:id', AdminGuard, ErrorHandler(AuthController.setVip));
-router.get('/unset_vip/:id', AdminGuard, ErrorHandler(AuthController.unsetVip));
+router.get('/set_vip/:id', AdminGuard, ErrorHandler(DealController.setVip));
+router.get('/unset_vip/:id', AdminGuard, ErrorHandler(DealController.unsetVip));
 
 router.all('*', (req, res) => res.status(400).json({ message: 'Bad Request.' }))
 
