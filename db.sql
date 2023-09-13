@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 11/09/2023 21:34:33
+ Date: 13/09/2023 14:26:41
 */
 
 SET NAMES utf8mb4;
@@ -76,7 +76,7 @@ CREATE TABLE `blog`  (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `html` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of blog
@@ -113,6 +113,10 @@ INSERT INTO `blog` VALUES (38, '<h1>Hello Everyone</h1> This is my slogan.');
 INSERT INTO `blog` VALUES (39, '<h1>Hello Everyone</h1> This is my slogan.');
 INSERT INTO `blog` VALUES (40, '<p>AAABBB</p>');
 INSERT INTO `blog` VALUES (41, '<p>This is store description');
+INSERT INTO `blog` VALUES (42, '<p>This is store description</p>');
+INSERT INTO `blog` VALUES (43, '<p>This is store description</p>');
+INSERT INTO `blog` VALUES (44, '<p>This is store description</p>');
+INSERT INTO `blog` VALUES (45, '<p>This is new blog</p>');
 
 -- ----------------------------
 -- Table structure for category
@@ -126,7 +130,7 @@ CREATE TABLE `category`  (
   `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `status` int(2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of category
@@ -166,6 +170,7 @@ INSERT INTO `category` VALUES (32, 'Home', 'home', -1, 'https://www.french-bandi
 INSERT INTO `category` VALUES (33, 'Garden', 'garden', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
 INSERT INTO `category` VALUES (34, 'Furniture', 'furniture', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
 INSERT INTO `category` VALUES (35, 'Home applicances', 'home-applicances', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
+INSERT INTO `category` VALUES (36, 'Category 1', 'category-slug1', -1, 'ABC', 0);
 
 -- ----------------------------
 -- Table structure for comment
@@ -242,12 +247,12 @@ CREATE TABLE `deal`  (
   `category_id` int(4) NULL DEFAULT NULL,
   `status` int(2) NULL DEFAULT 0,
   `start_date` timestamp(0) NULL DEFAULT NULL,
-  `expires` date NULL DEFAULT NULL,
+  `expires` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `count_of_used` int(4) NULL DEFAULT 0,
   `vip` int(2) NULL DEFAULT 0,
   `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 140 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 143 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of deal
@@ -485,7 +490,7 @@ CREATE TABLE `store`  (
   `info_html` int(4) NULL DEFAULT NULL,
   `status` int(4) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of store
@@ -509,7 +514,7 @@ INSERT INTO `store` VALUES (18, 'Chinese', 'www.amazon.com', 'https://www.french
 INSERT INTO `store` VALUES (19, 'Chinese', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 25, 1);
 INSERT INTO `store` VALUES (20, 'french', NULL, NULL, NULL, 1);
 INSERT INTO `store` VALUES (21, 'storename', NULL, NULL, NULL, 1);
-INSERT INTO `store` VALUES (22, 'Chinese', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 41, 1);
+INSERT INTO `store` VALUES (26, 'Store Name1', 'Store url', 'Image Path1', 45, 1);
 
 -- ----------------------------
 -- Table structure for user
@@ -537,6 +542,6 @@ INSERT INTO `user` VALUES (1, 'user1', 'daltonchua3@outlook.com', '$2a$10$AS9OnM
 INSERT INTO `user` VALUES (2, 'user2', 'daltonchua2@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'vip', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (3, 'user3', 'daltonchua1@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (4, 'vip', 'vip@gmail.com', '$2a$10$IejCcbRwK9UYC4iUJmcEteJDmOfV16GIUkKjVX.GEYNHXnTE.a/Ku', NULL, 'vip', NULL, 1, 0, 'Beginner', NULL);
-INSERT INTO `user` VALUES (5, 'admin', 'admin@gmail.com', '$2a$10$Gn6Uu3NeRnqTbjZQr84rXe6y8mOP3PBx6k0bdjsA/lI.qytkjOhYe', '2003-06-11', 'admin', '2681', 1, 0, 'Beginner', NULL);
+INSERT INTO `user` VALUES (5, 'admin', 'admin@gmail.com', '$2a$10$s/vwN4/KgXxZMjdttymp3.uIG5LSTYoDxcErgNzUvP929VoVtco5C', '2003-06-11', 'admin', '2681', 1, 0, 'Beginner', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

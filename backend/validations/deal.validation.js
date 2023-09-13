@@ -33,7 +33,7 @@ module.exports = {
         category_id: Joi.number(),
         vip: Joi.number(),
         start_date: Joi.date(),
-        expires: Joi.date(),
+        expires: Joi.string(),
         code: Joi.string()
     }),
     edit: Joi.object().keys({
@@ -48,7 +48,7 @@ module.exports = {
         deal_url: Joi.string(),
         image_urls: Joi.string(),
         category_id: Joi.number(),
-        expires: Joi.date()
+        expires: Joi.string()
     }),
     find: Joi.object().keys({
         type: Joi.string().required().external(validateSearchType),
