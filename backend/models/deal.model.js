@@ -314,8 +314,12 @@ Deal.setVipStatus = (id, status) => {
 
 Deal.getAll = () => {
     return new Promise((resolve, reject) => {
-        client.query("SELECT * FROM deal",
-            (err, rows) => {
+        client.query(`SELECT deal.*, user.username as username
+         FROM deal
+         LEFT JOIN
+         user
+         ON user.id = deal.user_id`
+         , (err, rows) => {
                 if (err) {
                     reject(err);
                     return;
