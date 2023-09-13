@@ -28,6 +28,7 @@ exports.edit = async (req, res) => {
             req.body.price_new = parseFloat(req.body.price_new.replace(",", "."))
         if (typeof req.body.price_low == "string")
             req.body.price_low = parseFloat(req.body.price_low.replace(",", "."))
+        delete req.body.user_id
         var result = await DealModel.edit(req.body);
         return res.json({
             message: "success",

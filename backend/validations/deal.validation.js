@@ -38,6 +38,7 @@ module.exports = {
     }),
     edit: Joi.object().keys({
         deal_id: Joi.number().required(),
+        user_id: Joi.number().required(),
         title: Joi.string().required(),
         description: Joi.string().required(),
         price_new: Joi.string(),
