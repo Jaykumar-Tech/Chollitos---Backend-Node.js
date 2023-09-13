@@ -20,7 +20,7 @@ Deal.create = (data) => {
 Deal.edit = (data) => {
     return new Promise((resolve, reject) => {
         client.query("UPDATE deal SET ? WHERE id=?",
-            [data, data.deal_id], (err, rows) => {
+            [data, data.id], (err, rows) => {
                 if (err) {
                     reject(err);
                     return;
