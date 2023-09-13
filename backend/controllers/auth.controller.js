@@ -259,32 +259,6 @@ exports.activate = async ( req, res ) => {
     }
 }
 
-exports.setVip = async ( req, res ) => {
-    try {
-        await UserModel.setVipStatus(req.params.id, 1);
-        return res.json({
-            message: "user activate success"
-        })
-    } catch (error) {
-        return res.status(400).send({
-            message: error.message
-        })
-    }
-}
-
-exports.unsetVip = async ( req, res ) => {
-    try {
-        await UserModel.setVipStatus(req.params.id, 0);
-        return res.json({
-            message: "user activate success"
-        })
-    } catch (error) {
-        return res.status(400).send({
-            message: error.message
-        })
-    }
-}
-
 /*
 
 

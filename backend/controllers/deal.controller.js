@@ -185,3 +185,29 @@ const load = async (filepath, user_id) => {
     return deals.length;
 }
 
+exports.setVip = async ( req, res ) => {
+    try {
+        await DealModel.setVipStatus(req.params.id, 1);
+        return res.json({
+            message: "success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+exports.unsetVip = async ( req, res ) => {
+    try {
+        await DealModel.setVipStatus(req.params.id, 0);
+        return res.json({
+            message: "success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
