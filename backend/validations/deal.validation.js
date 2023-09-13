@@ -48,7 +48,8 @@ module.exports = {
         deal_url: Joi.string(),
         image_urls: Joi.string(),
         category_id: Joi.number(),
-        expires: Joi.string()
+        expires: Joi.string(),
+        code: Joi.string()
     }),
     find: Joi.object().keys({
         type: Joi.string().required().external(validateSearchType),
