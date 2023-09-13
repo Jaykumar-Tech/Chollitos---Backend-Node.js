@@ -295,14 +295,14 @@ Deal.delete = (id) => {
 
 Deal.setVipStatus = (id, status) => {
     return new Promise((resolve, reject) => {
-        client.query("UPDATE user SET vip=? WHERE id=?",
+        client.query("UPDATE deal SET vip=? WHERE id=?",
             [status, id], (err, row) => {
                 if (err) {
                     reject(err);
                     return;
                 } else if ( row.affectedRows == 0 ) {
                     reject({
-                        message: "User not found"
+                        message: "Deal not found"
                     })
                 }
                 else {
