@@ -8,7 +8,7 @@ const Exist = require("../middleware/existance.middleware")
 const schema = require('../validations/deal.validation');
 const validate = require('../utils/validator.util');
 const {dealFilter, dealCreate} = require("../middleware/deal.middleware");
-const {AuthGuard} = require('../middleware/auth.middleware'); 
+const {AuthGuard, AdminGuard} = require('../middleware/auth.middleware'); 
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -29,7 +29,9 @@ router.post('/find', dealFilter, AuthGuard, validate(schema.find), ErrorHandler(
 router.post('/count', dealFilter, validate(schema.count), ErrorHandler(DealController.count));
 router.get('/get/:id',  AuthGuard,  ErrorHandler(DealController.get));
 router.get('/usecode/:id', ErrorHandler(DealController.useCode));
-router.get('/delete/:id',        AuthGuard,         ErrorHandler(DealController.remove)); // register with email and password
+router.get('/delete/:id',      AdminGuard,           ErrorHandler(DealController.delete)); // register with email and password
+router.get('/activate/:id',     AdminGuard,            ErrorHandler(DealController.activate)); // register with email and password
+router.get('/deactivate/:id',   AdminGuard,              ErrorHandler(DealController.deactivate)); // register with email and password
 
 router.all('*', (req, res) => res.status(400).json({ message: 'Bad Request.' }))
 

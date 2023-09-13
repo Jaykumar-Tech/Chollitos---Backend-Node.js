@@ -258,15 +258,33 @@ Deal.useCode = (id) => {
     });
 };
 
-
-Deal.remove = (id) => {
+Deal.changeStatus = (id, status) => {
     return new Promise((resolve, reject) => {
-        client.query("UPDATE deal SET status = 0 WHERE id = ?", id, (err, res) => {
+        client.query("UPDATE deal SET status = ? WHERE id = ?", 
+        [status, id], (err, res) => {
             if (err) {
                 reject(err);
                 return;
             } else if (res.affectedRows == 0) {
-                reject({ message: "not_found" });
+                reject({ message: "Deal not found" });
+                return;
+            } else {
+                resolve(res);
+            }
+        });
+    })
+};
+
+Deal.delete = (id) => {
+    return new Promise((resolve, reject) => {
+        client.query("DELETE FROM deal WHERE id = ?", 
+        [id], (err, res) => {
+            console.log(res)
+            if (err) {
+                reject(err);
+                return;
+            } else if (res.affectedRows == 0) {
+                reject({ message: "Deal not found" });
                 return;
             } else {
                 resolve(res);

@@ -110,11 +110,37 @@ exports.upload = async (req, res) => {
     }
 }
 
-exports.remove = async (req, res) => {
+exports.delete = async (req, res) => {
     try {
-        await DealModel.remove(req.params.id);
+        await DealModel.delete(req.params.id);
         return res.json({
-            message: "deal deletion success"
+            message: "Deleting deal success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+exports.activate = async (req, res) => {
+    try {
+        await DealModel.changeStatus(req.params.id, 1);
+        return res.json({
+            message: "Activating deal success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+exports.deactivate = async (req, res) => {
+    try {
+        await DealModel.changeStatus(req.params.id, 0);
+        return res.json({
+            message: "Deactivating deal success"
         })
     } catch (error) {
         return res.status(400).send({
