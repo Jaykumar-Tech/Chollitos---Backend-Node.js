@@ -67,7 +67,7 @@ const buildFilter = (data) => {
     if ( data.search && data.search.length > 0 ) {
         filter.push(`title LIKE '%${data.search}%'`);
     }
-    filter.push("status=1")
+    filter.push("deal.status=1")
 
     filter = filter.join(" AND ");
     return filter ;
