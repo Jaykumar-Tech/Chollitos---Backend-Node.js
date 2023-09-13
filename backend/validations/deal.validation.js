@@ -38,21 +38,16 @@ module.exports = {
     }),
     edit: Joi.object().keys({
         deal_id: Joi.number().required(),
-        user_id: Joi.number().required(),
         title: Joi.string().required(),
         description: Joi.string().required(),
         price_new: Joi.string(),
         price_low: Joi.string(),
-        price_ship: Joi.string(),
         type: Joi.string().required().external(validateType),
         store_id: Joi.number(),
         deal_url: Joi.string(),
         image_urls: Joi.string(),
         category_id: Joi.number(),
-        vip: Joi.number(),
-        start_date: Joi.date(),
-        expires: Joi.date(),
-        code: Joi.string()
+        expires: Joi.date()
     }),
     find: Joi.object().keys({
         type: Joi.string().required().external(validateSearchType),

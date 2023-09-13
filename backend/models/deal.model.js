@@ -17,10 +17,10 @@ Deal.create = (data) => {
     })
 };
 
-Deal.edit = (id, data) => {
+Deal.edit = (data) => {
     return new Promise((resolve, reject) => {
         client.query("UPDATE deal SET ? WHERE id=?",
-            [data, id], (err, rows) => {
+            [data, data.deal_id], (err, rows) => {
                 if (err) {
                     reject(err);
                     return;

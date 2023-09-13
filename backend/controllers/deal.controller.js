@@ -24,7 +24,11 @@ exports.create = async (req, res) => {
 
 exports.edit = async (req, res) => {
     try {
-        var result = await DealModel.edit(req.body.id, req.body);
+        if (typeof req.body.price_new == "string")
+            req.body.price_new = parseFloat(req.body.price_new.replace(",", "."))
+        if (typeof req.body.price_low == "string")
+            req.body.price_low = parseFloat(req.body.price_low.replace(",", "."))
+        var result = await DealModel.edit(req.body);
         return res.json({
             message: "success",
             data: result
