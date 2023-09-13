@@ -14,6 +14,8 @@ module.exports = async (req, res, next) => {
             var keys = Object.keys(req.body);
             if (keys.indexOf("user_id") >= 0)
                 await UserModel.findById(req.body.user_id);
+            if (keys.indexOf("deal_id") >= 0)
+                await DealModel.get(req.body.deal_id);
             if (keys.indexOf("receiver_id") >= 0)
                 await UserModel.findById(req.body.receiver_id);
             if (keys.indexOf("store_id") >= 0 && req.body.store_id != -1)
@@ -25,20 +27,6 @@ module.exports = async (req, res, next) => {
                 await BlogModel.get(req.body.blog_id);
             if (keys.indexOf("info_html") >= 0 && req.body.info_html != -1)
                 await BlogModel.get(req.body.info_html);
-            if (keys.indexOf("tip_id") >= 0 && req.body.tip_id != -1)
-                await BlogModel.get(req.body.tip_id);
-            if (keys.indexOf("stories_id") >= 0 && req.body.stories_id != -1)
-                await BlogModel.get(req.body.stories_id);
-            if (keys.indexOf("about_id") >= 0 && req.body.about_id != -1)
-                await BlogModel.get(req.body.about_id);
-            if (keys.indexOf("faq_id") >= 0 && req.body.faq_id != -1)
-                await BlogModel.get(req.body.faq_id);
-            if (keys.indexOf("howto_id") >= 0 && req.body.howto_id != -1)
-                await BlogModel.get(req.body.howto_id);
-            if (keys.indexOf("didyou_id") >= 0 && req.body.didyou_id != -1)
-                await BlogModel.get(req.body.didyou_id);
-            if (keys.indexOf("activity_id") >= 0 && req.body.activity_id != -1)
-                await ActivityModel.getName(req.body.activity_id);
             if (keys.indexOf("dest_id") >= 0) {
                 if (req.body.type == "comment")
                     await CommentModel.get(req.body.dest_id);
@@ -46,11 +34,11 @@ module.exports = async (req, res, next) => {
                     await UserModel.findById(req.body.dest_id);
                 else if (req.body.type == "deal")
                     await DealModel.get(req.body.dest_id);
-                else if (req.body.type == "discussion" && req.body.dest_id != -1) 
+                else if (req.body.type == "discussion" && req.body.dest_id != -1)
                     throw new Error("The comment of discussion requires dest_id as -1")
             }
-            if ( keys.indexOf("parent_id") >= 0 ) {
-                if ( req.body.parent_id != -1 ) {
+            if (keys.indexOf("parent_id") >= 0) {
+                if (req.body.parent_id != -1) {
                     await CategoryModel.get(req.body.parent_id)
                 }
             }

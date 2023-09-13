@@ -37,12 +37,13 @@ module.exports = {
         code: Joi.string()
     }),
     edit: Joi.object().keys({
-        id: Joi.number().required(),
+        deal_id: Joi.number().required(),
+        user_id: Joi.number().required(),
         title: Joi.string().required(),
         description: Joi.string().required(),
-        price_new: Joi.number(),
-        price_low: Joi.number(),
-        price_ship: Joi.number(),
+        price_new: Joi.string(),
+        price_low: Joi.string(),
+        price_ship: Joi.string(),
         type: Joi.string().required().external(validateType),
         store_id: Joi.number(),
         deal_url: Joi.string(),
