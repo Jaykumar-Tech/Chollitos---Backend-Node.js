@@ -5,7 +5,6 @@ const Deal = function (deal) {
 };
 
 Deal.create = (data) => {
-    data.status = 1;
     return new Promise((resolve, reject) => {
         client.query("INSERT INTO deal SET ?",
             [data], (err, row) => {
