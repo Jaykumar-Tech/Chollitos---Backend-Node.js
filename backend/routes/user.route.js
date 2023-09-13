@@ -16,6 +16,8 @@ router.post('/update_role', AdminGuard, validate(schema.updateRole), ErrorHandle
 router.get('/delete/:id', AdminGuard, ErrorHandler(AuthController.delete));
 router.get('/deactivate/:id', AdminGuard, ErrorHandler(AuthController.deactivate));
 router.get('/activate/:id', AdminGuard, ErrorHandler(AuthController.activate));
+router.get('/set_vip/:id', AdminGuard, ErrorHandler(AuthController.setVip));
+router.get('/unset_vip/:id', AdminGuard, ErrorHandler(AuthController.unsetVip));
 
 // Login
 router.post('/login', ErrorHandler(AuthController.login)); // exist email

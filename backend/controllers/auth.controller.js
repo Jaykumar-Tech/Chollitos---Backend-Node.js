@@ -7,7 +7,6 @@ const moment = require("moment")
 const UserModel = require("../models/user.model");
 const urlConfig = require("../config/url.config")
 
-
 const sendCode = async (email, code) => {
     return new Promise(async (resolve, reject) => {
         const transporter = nodemailer.createTransport({
@@ -250,6 +249,32 @@ exports.deactivate = async ( req, res ) => {
 exports.activate = async ( req, res ) => {
     try {
         await UserModel.changeStatusById(req.params.id, 1);
+        return res.json({
+            message: "user activate success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+exports.setVip = async ( req, res ) => {
+    try {
+        await UserModel.setVipStatus(req.params.id, 1);
+        return res.json({
+            message: "user activate success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+exports.unsetVip = async ( req, res ) => {
+    try {
+        await UserModel.setVipStatus(req.params.id, 0);
         return res.json({
             message: "user activate success"
         })
