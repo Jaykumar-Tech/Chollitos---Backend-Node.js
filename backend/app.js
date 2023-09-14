@@ -29,8 +29,8 @@ const likeRoute = require("./routes/like.route")
 const commentRoute = require("./routes/comment.route")
 const resourceRoute = require("./routes/resource.route")
 const activityRoute = require("./routes/activity.route")
+const configRoute = require("./routes/config.route")
 const bannerRoute = require("./routes/banner.route")
-const langRoute = require("./routes/lang.route")
 
 app.use(ExistGuard);
 app.use('/api/user', userRoute);
@@ -45,8 +45,8 @@ app.use("/api/like", likeRoute)
 app.use("/api/comment", commentRoute)
 app.use("/api/resource", resourceRoute)
 app.use("/api/activity", activityRoute)
+app.use("/api/config", configRoute)
 app.use("/api/banner", bannerRoute)
-app.use("/api/lang", langRoute)
 
 app.use(express.static(path.join(__dirname, 'public')));
 

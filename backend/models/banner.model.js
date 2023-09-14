@@ -6,7 +6,7 @@ const Banner = function (banner) {
 
 Banner.save = (data) => {
     return new Promise((resolve, reject)=>{
-        client.query("UPDATE banner set html=? WHERE id=1",
+        client.query("UPDATE banner SET ? WHERE id=1",
         [data], (err, row) => {
             if (err) {
                 reject(err);
@@ -19,7 +19,7 @@ Banner.save = (data) => {
 
 Banner.load = () => {
     return new Promise((resolve, reject) => {
-        client.query("SELECT html FROM banner WHERE id = 1", 
+        client.query("SELECT title, content FROM banner WHERE id = 1", 
          (err, rows) => {
             if (err) {
                 reject(err);

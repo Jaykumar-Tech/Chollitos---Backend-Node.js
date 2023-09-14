@@ -5,9 +5,10 @@ const jwtUtil = require('../utils/jwt.util');
 const nodemailer = require("nodemailer");
 const moment = require("moment")
 const UserModel = require("../models/user.model");
+const ConfigModel = require("../models/config.model");
 const urlConfig = require("../config/url.config")
 
-const sendCode = async (email, code) => {
+const sendCode = async (email, html) => {
     return new Promise(async (resolve, reject) => {
         const transporter = nodemailer.createTransport({
             service: "hotmail",
@@ -17,15 +18,12 @@ const sendCode = async (email, code) => {
             },
           });
           
-          // Generate a random verification code
-          const verificationCode = "Hello";
-          
           // Compose the email
           const mailOptions = {
             from: mailConfig.mail,
             to: email,
-            subject: "Verification Code",
-            text:   `Your verification code is ${code}`,
+            subject: "From chollitos.net",
+            html:   html,
           };
           
           // Send the email
@@ -57,7 +55,7 @@ exports.register = async (req, res) => {
         const hashedPassword = await bcryptUtil.createHash(password);
         const code = bcryptUtil.genCode();
         const birthday = req.body.birthday
-        await sendCode(email, code);
+        await sendCode(email, `Your verification code is ${code}`);
         // if (Object.keys(req.body).indexOf("avatar") == -1)
         //     req.body.avatar = `${urlConfig.SERVER_URL}api/resource/get/default-avatar.png`;
         const userData = {
@@ -128,6 +126,10 @@ exports.verifyCode = async (req, res) => {
         if (user.code != req.body.code)
             throw new Error("Code is wrong")
         UserModel.changeStatusByEmail(req.body.email, 1);
+        if ( !user.status ) {
+            var config = await ConfigModel.get()
+            await sendCode(req.body.email, config.welcome_email)
+        }
         return res.json({
             message: "register success"
         })
@@ -142,7 +144,7 @@ exports.verifyCode = async (req, res) => {
 exports.resendCode = async (req, res) => {
     try {
         var code = bcryptUtil.genCode();
-        await sendCode(req.body.email, code);
+        await sendCode(req.body.email, `Your verification code is ${code}`);
         await UserModel.saveCode(req.body.email, code);
         return res.json({
             message: "resend code success"
