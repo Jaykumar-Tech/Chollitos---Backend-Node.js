@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 14/09/2023 10:29:21
+ Date: 14/09/2023 14:41:43
 */
 
 SET NAMES utf8mb4;
@@ -58,15 +58,16 @@ INSERT INTO `activity_name` VALUES (4, 'leave comment', 10);
 -- ----------------------------
 DROP TABLE IF EXISTS `banner`;
 CREATE TABLE `banner`  (
-  `id` int(4) NOT NULL AUTO_INCREMENT,
-  `html` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `id` int(2) NOT NULL,
+  `title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of banner
 -- ----------------------------
-INSERT INTO `banner` VALUES (1, '<p><strong>Hola,&nbsp;</strong></p><p><strong>Creo que sería beneficioso mantener contacto incluso después de que el proyecto concluya.</strong></p><p><strong>¿Podrías comunicarte conmigo fuera de freelancer.com?</strong></p><p><br></p><p><strong>Whatsapp</strong>: <span style=\"color: rgb(230, 0, 0);\">+584242371521</span></p><p><strong>Skype</strong>: <span style=\"color: rgb(230, 0, 0);\">live:.cid.82cf83a910c4a764</span></p><p>...</p>');
+INSERT INTO `banner` VALUES (1, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for blog
@@ -231,6 +232,25 @@ INSERT INTO `comment` VALUES (43, 4, 35, 40, 'deal', '2023-09-08 22:43:50');
 INSERT INTO `comment` VALUES (44, 5, 44, 47, 'deal', '2023-09-13 20:25:55');
 
 -- ----------------------------
+-- Table structure for config
+-- ----------------------------
+DROP TABLE IF EXISTS `config`;
+CREATE TABLE `config`  (
+  `id` int(2) NOT NULL,
+  `site_title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `welcome_email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `language` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `popular_shops` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `popular_categories` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of config
+-- ----------------------------
+INSERT INTO `config` VALUES (1, 'chollitos.net', '<h1>Welcome to chollitos.net</h1>', 'es', '[1,2,3,4,5]', '[]');
+
+-- ----------------------------
 -- Table structure for deal
 -- ----------------------------
 DROP TABLE IF EXISTS `deal`;
@@ -321,21 +341,6 @@ INSERT INTO `deal` VALUES (75, 'lkea gift card of 50$ for only 43.11 in Eneba', 
 INSERT INTO `deal` VALUES (76, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'free', NULL, NULL, 0.00, 10, 'https://www.amazon.es/deal/13545001', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829\",\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718\",\"https://www.french-bandit.com/cdn/shop/files/packshot-pendentifs-lumineux1_400x.jpg?v=1686912148\",\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 3, 10, 1, '2023-08-12 12:00:00', '2023-09-17', 3, 1, 'CODE EXP');
 INSERT INTO `deal` VALUES (77, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'deal', 100.00, 20.00, 0.00, 10, 'https://www.amazon.es/deal/13545001', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829\",\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718\",\"https://www.french-bandit.com/cdn/shop/files/packshot-pendentifs-lumineux1_400x.jpg?v=1686912148\",\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 3, 11, 1, '2023-08-21 12:00:00', '2023-09-22', 0, 0, NULL);
 INSERT INTO `deal` VALUES (78, 'lkea gift card of 50$ for only 43.11 in Eneba', 'Ikea gift card of €50 for only €43.11 in Eneba\nIdeal to arry all your favorite products with the best discounts Be sure to apply this promotional code before completing your purchase.', 'discount_fixed', 20.00, NULL, 0.00, 10, 'https://www.amazon.es/deal/13545001', '[\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829\",\"https://www.french-bandit.com/cdn/shop/files/packshot-tapis-voyage-2tailles_400x.jpg?v=1686920718\",\"https://www.french-bandit.com/cdn/shop/files/packshot-pendentifs-lumineux1_400x.jpg?v=1686912148\",\"https://www.french-bandit.com/cdn/shop/files/packshot-gamelle-voyage1_400x.jpg?v=1686921236\"]', 3, 12, 1, '2023-08-11 12:00:00', '2023-09-12', 2, 0, 'CODE EXP');
-
--- ----------------------------
--- Table structure for language
--- ----------------------------
-DROP TABLE IF EXISTS `language`;
-CREATE TABLE `language`  (
-  `id` int(2) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of language
--- ----------------------------
-INSERT INTO `language` VALUES (1, 'es');
 
 -- ----------------------------
 -- Table structure for likes
