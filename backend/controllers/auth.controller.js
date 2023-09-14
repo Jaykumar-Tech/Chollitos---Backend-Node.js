@@ -93,6 +93,7 @@ exports.login = async (req, res) => {
                 token_type: 'Bearer',
                 expires_in: jwtConfig.ttl,
                 user: {
+                    id: user.id,
                     name: user.username,
                     role: user.role,
                     avatar: user.avatar,
