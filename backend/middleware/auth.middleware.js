@@ -28,7 +28,7 @@ const AuthGuard = async (req, res, next) => {
             if (token) {
                 try {
                     req.user = await getUserFromToken(token);
-                    if (req.user.role != "vip" && req.user.role !='admin') res.status(401).json({ message: 'Unauthorized' });
+                    if (req.user.role != "vip" && req.user.role != 'admin') res.status(401).json({ message: 'Unauthorized' });
                     else next();
                 } catch (error) {
                     return res.status(401).json({ message: 'Unauthorized' });
@@ -37,6 +37,11 @@ const AuthGuard = async (req, res, next) => {
                 return res.status(400).json({ message: 'Authorization header is missing.' })
             }
         } else {
+            if (token) {
+                try {
+                    req.user = await getUserFromToken(token);
+                } catch (error) { }
+            }
             next();
         }
     } else if (req.method == "GET" && req.originalUrl.startsWith("/api/deal/get/")) {

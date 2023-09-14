@@ -32,8 +32,8 @@ exports.edit = async (req, res) => {
         req.body.id = req.body.deal_id
         delete req.body.deal_id
         var deal = await DealModel.get(req.body.id)
-        if ( req.user.role != 'admin' ) {
-            if ( deal.user_id != req.user.id ) 
+        if (req.user.role != 'admin') {
+            if (deal.user_id != req.user.id)
                 throw new Error("You can't edit other's bargain")
             req.body.status = 0
         }
@@ -66,7 +66,7 @@ exports.count = async (req, res) => {
 exports.find = async (req, res) => {
     try {
         req.body.admin = (req.user?.role == 'admin')
-        req.body.user_id = req.user.id 
+        req.body.user_id = req.user?.id ?? -1
         var result = await DealModel.find(req.body);
         return res.json({
             message: "success",
@@ -201,7 +201,7 @@ const load = async (filepath, user_id) => {
     return deals.length;
 }
 
-exports.setVip = async ( req, res ) => {
+exports.setVip = async (req, res) => {
     try {
         await DealModel.setVipStatus(req.params.id, 1);
         return res.json({
@@ -214,7 +214,7 @@ exports.setVip = async ( req, res ) => {
     }
 }
 
-exports.getAll = async ( req, res ) => {
+exports.getAll = async (req, res) => {
     try {
         var result = await DealModel.getAll(req.user.id, req.user.role)
         return res.json({
@@ -228,7 +228,7 @@ exports.getAll = async ( req, res ) => {
     }
 }
 
-exports.unsetVip = async ( req, res ) => {
+exports.unsetVip = async (req, res) => {
     try {
         await DealModel.setVipStatus(req.params.id, 0);
         return res.json({

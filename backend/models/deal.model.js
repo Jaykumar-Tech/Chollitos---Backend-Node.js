@@ -69,8 +69,10 @@ const buildFilter = (data) => {
     }
     if (data.admin)
         filter.push("1=1")
-    else
+    else if ( data.user_id != -1 )
         filter.push(`(deal.status=1 OR deal.user_id=${data.user_id})`)
+    else
+        filter.push(`deal.status=1`)
 
     filter = filter.join(" AND ");
     return filter;

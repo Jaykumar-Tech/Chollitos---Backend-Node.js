@@ -127,7 +127,7 @@ exports.verifyCode = async (req, res) => {
         if (user.code != req.body.code)
             throw new Error("Code is wrong")
         UserModel.changeStatusByEmail(req.body.email, 1);
-        if ( !user.status ) {
+        if ( user.status != 1 ) {
             var config = await ConfigModel.get()
             await sendCode(req.body.email, config.welcome_email)
         }
