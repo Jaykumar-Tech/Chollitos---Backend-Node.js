@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 13/09/2023 14:26:41
+ Date: 13/09/2023 22:03:58
 */
 
 SET NAMES utf8mb4;
@@ -66,7 +66,7 @@ CREATE TABLE `banner`  (
 -- ----------------------------
 -- Records of banner
 -- ----------------------------
-INSERT INTO `banner` VALUES (1, '<p>This is new banner aaaa adsf</p>');
+INSERT INTO `banner` VALUES (1, '<p><strong>Hola,&nbsp;</strong></p><p><strong>Creo que sería beneficioso mantener contacto incluso después de que el proyecto concluya.</strong></p><p><strong>¿Podrías comunicarte conmigo fuera de freelancer.com?</strong></p><p><br></p><p><strong>Whatsapp</strong>: <span style=\"color: rgb(230, 0, 0);\">+584242371521</span></p><p><strong>Skype</strong>: <span style=\"color: rgb(230, 0, 0);\">live:.cid.82cf83a910c4a764</span></p><p>...</p>');
 
 -- ----------------------------
 -- Table structure for blog
@@ -76,7 +76,7 @@ CREATE TABLE `blog`  (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `html` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 48 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of blog
@@ -117,6 +117,8 @@ INSERT INTO `blog` VALUES (42, '<p>This is store description</p>');
 INSERT INTO `blog` VALUES (43, '<p>This is store description</p>');
 INSERT INTO `blog` VALUES (44, '<p>This is store description</p>');
 INSERT INTO `blog` VALUES (45, '<p>This is new blog</p>');
+INSERT INTO `blog` VALUES (46, '<h1>Hello Everyone</h1> This is my slogan.');
+INSERT INTO `blog` VALUES (47, '<h1>Hello Everyone</h1> This is my slogan.');
 
 -- ----------------------------
 -- Table structure for category
@@ -184,7 +186,7 @@ CREATE TABLE `comment`  (
   `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `date` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 45 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of comment
@@ -227,6 +229,7 @@ INSERT INTO `comment` VALUES (38, 3, 41, 35, 'deal', '2023-09-06 03:02:41');
 INSERT INTO `comment` VALUES (39, 3, 41, 36, 'deal', '2023-09-06 03:03:10');
 INSERT INTO `comment` VALUES (42, 3, 41, 39, 'deal', '2023-09-06 16:21:29');
 INSERT INTO `comment` VALUES (43, 4, 35, 40, 'deal', '2023-09-08 22:43:50');
+INSERT INTO `comment` VALUES (44, 5, 44, 47, 'deal', '2023-09-13 20:25:55');
 
 -- ----------------------------
 -- Table structure for deal
