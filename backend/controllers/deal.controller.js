@@ -31,8 +31,12 @@ exports.edit = async (req, res) => {
         delete req.body.user_id
         req.body.id = req.body.deal_id
         delete req.body.deal_id
-        if ( req.user.role != 'admin' )
+        var deal = await DealModel.get(req.body.id)
+        if ( req.user.role != 'admin' ) {
+            if ( deal.user_id != req.user.id ) 
+                throw new Error("You can't edit other's bargain")
             req.body.status = 0
+        }
         var result = await DealModel.edit(req.body);
         return res.json({
             message: "success",
