@@ -1,4 +1,4 @@
 module.exports = { 
-    secret: `${process.env.JWT_SECRET}`,
+    secret: `This is JWT TOKEN SECRET`,
     ttl: 3000000
 }
