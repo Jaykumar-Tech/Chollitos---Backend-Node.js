@@ -2,7 +2,7 @@ BannerModel = require("../models/banner.model");
 
 exports.save = async (req, res) => {
     try {
-        var result = await BannerModel.save(req.body.html) ;
+        var result = await BannerModel.save(req.body) ;
         return res.json({
             message: "success",
             data: result.insertId
