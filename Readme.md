@@ -5,5 +5,3 @@
 
 # Github
 - url: https://github.com/daltonbreka/nodejs-mysql-firebase-payment-backend-chollo.git
-
-

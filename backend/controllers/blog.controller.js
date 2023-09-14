@@ -5,7 +5,7 @@ exports.create = async (req, res) => {
         var result = await BlogModel.create(req.body.html) ;
         return res.json({
             message: "success",
-            data: result.insertId
+            data: result
         })
     } catch (error) {
         return res.status(400).send({

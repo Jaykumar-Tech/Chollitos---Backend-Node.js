@@ -8,7 +8,7 @@ exports.create = async (req, res) => {
         // req.body.date = moment.utc().format("YYYY-MM-DD HH:mm:ss")
         req.body.date = moment(new Date(new Date().toUTCString())).format("YYYY-MM-DD HH:mm:ss") ;
         var blog_id = await BlogModel.create(req.body.blog) ;
-        req.body.blog_id = blog_id.insertId ;
+        req.body.blog_id = blog_id ;
         delete req.body.blog;
         var result = await CommentModel.create(req.body) ;
         return res.json({
