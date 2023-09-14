@@ -31,6 +31,8 @@ exports.edit = async (req, res) => {
         delete req.body.user_id
         req.body.id = req.body.deal_id
         delete req.body.deal_id
+        if ( req.user.role != 'admin' )
+            req.body.status = 0
         var result = await DealModel.edit(req.body);
         return res.json({
             message: "success",
