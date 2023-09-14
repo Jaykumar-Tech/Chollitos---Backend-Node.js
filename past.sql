@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 13/09/2023 22:04:05
+ Date: 14/09/2023 10:29:33
 */
 
 SET NAMES utf8mb4;
@@ -172,7 +172,6 @@ INSERT INTO `category` VALUES (32, 'Home', 'home', -1, 'https://www.french-bandi
 INSERT INTO `category` VALUES (33, 'Garden', 'garden', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
 INSERT INTO `category` VALUES (34, 'Furniture', 'furniture', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
 INSERT INTO `category` VALUES (35, 'Home applicances', 'home-applicances', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
-INSERT INTO `category` VALUES (36, 'Category 1', 'category-slug1', -1, 'ABC', 0);
 
 -- ----------------------------
 -- Table structure for comment
@@ -515,9 +514,6 @@ INSERT INTO `store` VALUES (16, 'Carrefour', 'www.amazon.com', 'https://www.fren
 INSERT INTO `store` VALUES (17, 'cheerz', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 22, 1);
 INSERT INTO `store` VALUES (18, 'Chinese', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 23, 1);
 INSERT INTO `store` VALUES (19, 'Chinese', 'www.amazon.com', 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 25, 1);
-INSERT INTO `store` VALUES (20, 'french', NULL, NULL, NULL, 1);
-INSERT INTO `store` VALUES (21, 'storename', NULL, NULL, NULL, 1);
-INSERT INTO `store` VALUES (26, 'Store Name1', 'Store url', 'Image Path1', 45, 1);
 
 -- ----------------------------
 -- Table structure for user
