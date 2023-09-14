@@ -61,6 +61,7 @@ exports.count = async (req, res) => {
 
 exports.find = async (req, res) => {
     try {
+        req.body.admin = (req.user.role == 'admin')
         var result = await DealModel.find(req.body);
         return res.json({
             message: "success",

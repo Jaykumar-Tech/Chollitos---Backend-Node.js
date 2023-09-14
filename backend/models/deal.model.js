@@ -35,13 +35,13 @@ Deal.edit = (data) => {
 };
 
 const buildFilter = (data) => {
-    var filter = [] ;
+    var filter = [];
     // filter.push("start_date <= UTC_DATE()")
     if (data.type == "free") filter.push(`type='free'`)
     if (data.type == "deal") filter.push(`type='deal'`)
     if (data.type == "discount") filter.push(`type!='deal'`)
     if (data.vip == 1) filter.push(`vip=1`)
-    else if ( data.vip == 0 ) filter.push("vip=0")
+    else if (data.vip == 0) filter.push("vip=0")
     if (data.store_id != -1) filter.push(`store_id=${data.store_id}`);
     if (data.category_id.length > 0) filter.push(`category_id IN (${data.category_id.join(",")})`);
     if (data.feature == "popular") filter.push(`(
@@ -64,19 +64,22 @@ const buildFilter = (data) => {
             ELSE A.count_comment
         END 
     ) > 0`);
-    if ( data.search && data.search.length > 0 ) {
+    if (data.search && data.search.length > 0) {
         filter.push(`title LIKE '%${data.search}%'`);
     }
-    filter.push("deal.status=1")
+    if (data.admin)
+        filter.push("1=1")
+    else
+        filter.push("deal.status=1")
 
     filter = filter.join(" AND ");
-    return filter ;
+    return filter;
 }
 
 Deal.find = (data) => {
     var start_at = data.start_at;
     var length = data.length;
-    var filter = buildFilter(data) ;
+    var filter = buildFilter(data);
     return new Promise((resolve, reject) => {
         client.query(`SELECT deal.id , deal.title, deal.type, 
         deal.price_new, deal.price_low, deal.price_ship, deal.store_id, deal.deal_url, deal.image_urls,
@@ -136,7 +139,7 @@ Deal.find = (data) => {
 }
 
 Deal.count = (data) => {
-    var filter = buildFilter(data) ;
+    var filter = buildFilter(data);
     return new Promise((resolve, reject) => {
         client.query(`SELECT count(*) as cnt_deal
         FROM deal 
@@ -259,36 +262,36 @@ Deal.useCode = (id) => {
 
 Deal.changeStatus = (id, status) => {
     return new Promise((resolve, reject) => {
-        client.query("UPDATE deal SET status = ? WHERE id = ?", 
-        [status, id], (err, res) => {
-            if (err) {
-                reject(err);
-                return;
-            } else if (res.affectedRows == 0) {
-                reject({ message: "Deal not found" });
-                return;
-            } else {
-                resolve(res);
-            }
-        });
+        client.query("UPDATE deal SET status = ? WHERE id = ?",
+            [status, id], (err, res) => {
+                if (err) {
+                    reject(err);
+                    return;
+                } else if (res.affectedRows == 0) {
+                    reject({ message: "Deal not found" });
+                    return;
+                } else {
+                    resolve(res);
+                }
+            });
     })
 };
 
 Deal.delete = (id) => {
     return new Promise((resolve, reject) => {
-        client.query("DELETE FROM deal WHERE id = ?", 
-        [id], (err, res) => {
-            console.log(res)
-            if (err) {
-                reject(err);
-                return;
-            } else if (res.affectedRows == 0) {
-                reject({ message: "Deal not found" });
-                return;
-            } else {
-                resolve(res);
-            }
-        });
+        client.query("DELETE FROM deal WHERE id = ?",
+            [id], (err, res) => {
+                console.log(res)
+                if (err) {
+                    reject(err);
+                    return;
+                } else if (res.affectedRows == 0) {
+                    reject({ message: "Deal not found" });
+                    return;
+                } else {
+                    resolve(res);
+                }
+            });
     })
 };
 
@@ -299,7 +302,7 @@ Deal.setVipStatus = (id, status) => {
                 if (err) {
                     reject(err);
                     return;
-                } else if ( row.affectedRows == 0 ) {
+                } else if (row.affectedRows == 0) {
                     reject({
                         message: "Deal not found"
                     })
@@ -313,8 +316,8 @@ Deal.setVipStatus = (id, status) => {
 }
 
 Deal.getAll = (userId, role) => {
-    var filter = "1=1" ;
-    if ( role != 'admin' ) {
+    var filter = "1=1";
+    if (role != 'admin') {
         filter = `deal.user_id=${userId}`
     }
     return new Promise((resolve, reject) => {
@@ -324,11 +327,11 @@ Deal.getAll = (userId, role) => {
          user
          ON user.id = deal.user_id
          WHERE ${filter}`
-         , (err, rows) => {
+            , (err, rows) => {
                 if (err) {
                     reject(err);
                     return;
-                } else if ( rows.length == 0 ) {
+                } else if (rows.length == 0) {
                     reject({
                         message: "Deal not found"
                     })
