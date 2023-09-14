@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 13/09/2023 22:03:58
+ Date: 14/09/2023 08:58:04
 */
 
 SET NAMES utf8mb4;
@@ -172,7 +172,6 @@ INSERT INTO `category` VALUES (32, 'Home', 'home', -1, 'https://www.french-bandi
 INSERT INTO `category` VALUES (33, 'Garden', 'garden', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
 INSERT INTO `category` VALUES (34, 'Furniture', 'furniture', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
 INSERT INTO `category` VALUES (35, 'Home applicances', 'home-applicances', 32, 'https://www.french-bandit.com/cdn/shop/files/packshot-tapis-rafraichissant1_400x.jpg?v=1686921829', 1);
-INSERT INTO `category` VALUES (36, 'Category 1', 'category-slug1', -1, 'ABC', 0);
 
 -- ----------------------------
 -- Table structure for comment
