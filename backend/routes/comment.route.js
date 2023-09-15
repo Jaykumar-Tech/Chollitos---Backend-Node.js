@@ -10,6 +10,7 @@ const {AuthGuard} = require('../middleware/auth.middleware');
 router.post('/add',   AuthGuard,          ErrorHandler(CommentController.create));
 router.post('/find',           ErrorHandler(CommentController.find));
 router.get('/get/:id',           ErrorHandler(CommentController.get));
+router.get('/delete/:id',           ErrorHandler(CommentController.delete));
 
 router.all('*',  (req, res) => res.status(400).json({ message: 'Bad Request.'}))
 

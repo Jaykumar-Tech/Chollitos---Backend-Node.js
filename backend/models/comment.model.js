@@ -112,4 +112,24 @@ Comment.find = (data) => {
     });
 };
 
+Comment.delete = (id) => {
+    return new Promise((resolve, reject) => {
+        client.query("DELETE FROM comment WHERE id = ?",
+            [id], (err, row) => {
+                if (err) {
+                    reject(err);
+                    return;
+                } else if (row.affectedRows == 0) {
+                    reject({
+                        message: "Comment not found"
+                    })
+                    return ;
+                }
+                else {
+                    resolve(row)
+                }
+            });
+    })
+};
+
 module.exports = Comment;
