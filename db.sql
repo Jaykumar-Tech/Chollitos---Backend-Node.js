@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 14/09/2023 23:02:16
+ Date: 15/09/2023 09:08:58
 */
 
 SET NAMES utf8mb4;
@@ -543,7 +543,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'user1', 'daltonchua3@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
+INSERT INTO `user` VALUES (1, 'user', 'user@gmail.com', '$2a$2a$10$FlPg/kakp8LFF0fM.Fr1NuHMpPTqjAtPTIbEMwCVpCemKKqS2qO6u', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (2, 'user2', 'daltonchua2@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'vip', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (3, 'user3', 'daltonchua1@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (4, 'vip', 'vip@gmail.com', '$2a$10$IejCcbRwK9UYC4iUJmcEteJDmOfV16GIUkKjVX.GEYNHXnTE.a/Ku', NULL, 'vip', NULL, 1, 0, 'Beginner', NULL);
