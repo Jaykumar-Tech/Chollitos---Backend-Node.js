@@ -1,5 +1,4 @@
 const jwtConfig = require('../config/jwt.config');
-const mailConfig = require("../config/server.mail");
 const bcryptUtil = require('../utils/bcrypt.util');
 const jwtUtil = require('../utils/jwt.util');
 const nodemailer = require("nodemailer");
@@ -9,6 +8,11 @@ const ConfigModel = require("../models/config.model");
 const urlConfig = require("../config/url.config")
 
 const sendCode = async (email, html) => {
+    const result = await ConfigModel.get()
+    const mailConfig = {
+        mail: result.email,
+        password: result.password
+    }
     return new Promise(async (resolve, reject) => {
         const transporter = nodemailer.createTransport({
             service: "hotmail",
