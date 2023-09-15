@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 15/09/2023 09:08:58
+ Date: 15/09/2023 11:46:38
 */
 
 SET NAMES utf8mb4;
@@ -242,13 +242,15 @@ CREATE TABLE `config`  (
   `language` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `popular_shops` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `popular_categories` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of config
 -- ----------------------------
-INSERT INTO `config` VALUES (1, 'chollitos.net', '<h1>Welcome to chollitos.net</h1>', 'es', '[1,2,3,4,5]', '[1,2,3,4,5,6]');
+INSERT INTO `config` VALUES (1, 'chollitos.net', '<h1>Welcome to chollitos.net</h1>', 'es', '[1,2,3,4,5]', '[1,2,3,4,5,6]', 'montakesau@outlook.com', 'Montake123');
 
 -- ----------------------------
 -- Table structure for deal
@@ -543,7 +545,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'user', 'user@gmail.com', '$2a$2a$10$FlPg/kakp8LFF0fM.Fr1NuHMpPTqjAtPTIbEMwCVpCemKKqS2qO6u', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
+INSERT INTO `user` VALUES (1, 'user', 'user@gmail.com', '$2a$10$4Zh/Oz3hQ8T171IxWukste48KVdyx9AP5QNEiRhz7GMTf/XLhUR2.', '2000-11-22', 'customer', '6594', 1, 0, 'Beginner', NULL);
 INSERT INTO `user` VALUES (2, 'user2', 'daltonchua2@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'vip', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (3, 'user3', 'daltonchua1@outlook.com', '$2a$10$AS9OnMOjAzTaUzdg6DZ93e1niyQXNv5nxhAMYyalOqjaEWkQPF1vi', NULL, 'customer', NULL, 1, 0, 'Beginner', '');
 INSERT INTO `user` VALUES (4, 'vip', 'vip@gmail.com', '$2a$10$IejCcbRwK9UYC4iUJmcEteJDmOfV16GIUkKjVX.GEYNHXnTE.a/Ku', NULL, 'vip', NULL, 1, 0, 'Beginner', NULL);
