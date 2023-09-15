@@ -84,7 +84,7 @@ Deal.find = (data) => {
     var filter = buildFilter(data);
     return new Promise((resolve, reject) => {
         client.query(`SELECT deal.id , deal.title, deal.type, 
-        deal.price_new, deal.price_low, deal.price_ship, deal.store_id, deal.deal_url, deal.image_urls,
+        deal.price_new, deal.price_low, deal.price_ship, deal.store_id, deal.deal_url, deal.image_urls, deal.pinned as starred,
         deal.user_id, deal.category_id, deal.status, deal.start_date, deal.expires, deal.count_of_used, deal.vip, deal.code
         , user.username as username, user.avatar as avatar, store.name as storename, category.slug as category_slug,
         CASE
