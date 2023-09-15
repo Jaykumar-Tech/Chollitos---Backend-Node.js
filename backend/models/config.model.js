@@ -19,7 +19,7 @@ Config.get = () => {
 
 Config.set = (data) => {
     return new Promise((resolve, reject) => {
-        client.query("UPDATE Config SET ? WHERE id = 1", 
+        client.query("UPDATE config SET ? WHERE id = 1", 
          [data], (err, row) => {
             if (err) {
                 reject(err);
