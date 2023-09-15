@@ -51,6 +51,8 @@ exports.edit = async (req, res) => {
 
 exports.count = async (req, res) => {
     try {
+        req.body.admin = (req.user?.role == 'admin')
+        req.body.user_id = req.user?.id ?? -1
         var result = await DealModel.count(req.body);
         return res.json({
             message: "success",
