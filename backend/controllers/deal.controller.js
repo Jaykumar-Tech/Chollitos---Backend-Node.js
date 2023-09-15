@@ -167,6 +167,32 @@ exports.deactivate = async (req, res) => {
     }
 }
 
+exports.pin = async (req, res) => {
+    try {
+        await DealModel.changePinnedStatus(req.params.id, 1);
+        return res.json({
+            message: "Setting deal pinned success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
+exports.unpin = async (req, res) => {
+    try {
+        await DealModel.changePinnedStatus(req.params.id, 0);
+        return res.json({
+            message: "Removing deal pinned success"
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message
+        })
+    }
+}
+
 const load = async (filepath, user_id) => {
     const workbook = XLSX.readFile(filepath);
     const worksheet = workbook.Sheets['Sheet1']; // Replace 'Sheet1' with the actual sheet name

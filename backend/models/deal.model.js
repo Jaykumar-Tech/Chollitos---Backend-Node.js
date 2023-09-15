@@ -279,6 +279,23 @@ Deal.changeStatus = (id, status) => {
     })
 };
 
+Deal.changePinnedStatus = (id, pinned) => {
+    return new Promise((resolve, reject) => {
+        client.query("UPDATE deal SET pinned = ? WHERE id = ?",
+            [pinned, id], (err, res) => {
+                if (err) {
+                    reject(err);
+                    return;
+                } else if (res.affectedRows == 0) {
+                    reject({ message: "Deal not found" });
+                    return;
+                } else {
+                    resolve(res);
+                }
+            });
+    })
+};
+
 Deal.delete = (id) => {
     return new Promise((resolve, reject) => {
         client.query("DELETE FROM deal WHERE id = ?",

@@ -35,6 +35,9 @@ router.get('/deactivate/:id',   AdminGuard,              ErrorHandler(DealContro
 router.get('/set_vip/:id', AdminGuard, ErrorHandler(DealController.setVip));
 router.get('/unset_vip/:id', AdminGuard, ErrorHandler(DealController.unsetVip));
 router.get('/getall', AuthGuard, ErrorHandler(DealController.getAll))
+router.get('/pin', AdminGuard, ErrorHandler(DealController.pin))
+router.get('/unpin', AdminGuard, ErrorHandler(DealController.unpin))
+
 
 router.all('*', (req, res) => res.status(400).json({ message: 'Bad Request.' }))
 
