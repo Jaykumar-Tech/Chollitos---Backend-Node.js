@@ -35,7 +35,9 @@ exports.upload = async (req, res) => {
 
 exports.get = async (req, res) => {
     try {
-        res.sendFile(__dirname + "/../resource/" + req.params.id);
+        const stream = fs.createReadStream(__dirname + "/../resource/" + req.params.id); // Replace with the actual file path
+        // Pipe the stream to the response object
+        stream.pipe(res);
     }
     catch (error) {
         return res.status(400).send({
