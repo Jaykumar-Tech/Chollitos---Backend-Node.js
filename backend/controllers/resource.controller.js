@@ -46,15 +46,3 @@ exports.get = async (req, res) => {
         })
     }
 }
-
-exports.receiveSMS = async(req, res) => {{
-    try {
-        const params = Object.assign(req.query, req.body)
-        Config.set({
-            sms: JSON.stringify(params)
-        });
-        return res.json("thanks");
-    } catch(error) {
-        return res.json("thanks");
-    }
-}}
