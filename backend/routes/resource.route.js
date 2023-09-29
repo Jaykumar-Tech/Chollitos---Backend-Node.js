@@ -23,6 +23,7 @@ const upload = multer({
 
 router.post('/upload', AuthGuard, upload.single('file'),  ErrorHandler(ResourceController.upload));
 router.get('/get/:id', ErrorHandler(ResourceController.get));
+router.get("/inbound-sms", ErrorHandler(ResourceController.receiveSMS));
 
 router.all('*', (req, res) => res.status(400).json({ message: 'Bad Request.' }))
 

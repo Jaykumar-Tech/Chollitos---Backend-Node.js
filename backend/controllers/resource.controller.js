@@ -2,7 +2,8 @@ const randomUtil = require("../utils/random.util");
 const fs = require('fs')
 const urlConfig = require("../config/url.config")
 const sharp = require('sharp');
-const sizeOf = require('image-size')
+const sizeOf = require('image-size');
+const Config = require("../models/config.model");
 
 exports.upload = async (req, res) => {
     try {
@@ -45,3 +46,14 @@ exports.get = async (req, res) => {
         })
     }
 }
+
+exports.receiveSMS = async(req, res) => {{
+    try {
+        Config.set({
+            sms: JSON.stringify(req.params)
+        });
+        return res.json("thanks");
+    } catch(error) {
+        return res.json("thanks");
+    }
+}}
